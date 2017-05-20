@@ -1,6 +1,6 @@
 sudo: false
 
-dist: trusty
+dist: python
 
 language: generic
 
