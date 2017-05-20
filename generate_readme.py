@@ -31,13 +31,13 @@ def get_section(title, data, h=2):
     headers = ['Numpy', 'PyTorch']
     rows = []
     for d in data:
-        rows.append([
-            '`' + d['numpy'] + '`',
-            '`' + d['pytorch'] + '`',
-        ])
+        numpy = '`' + d['numpy'] + '`' if d['numpy'] is not None else ''
+        pytorch = '`' + d['pytorch'] + '`'  if d['pytorch'] is not None else ''
+        rows.append([numpy, pytorch])
 
     content = '%s %s\n\n' % ('#' * h, title.capitalize())
-    content += tabulate.tabulate(rows, headers=headers, tablefmt='pipe') + '\n'
+    content += tabulate.tabulate(rows, headers=headers, tablefmt='pipe')
+    content += '\n\n'
     return content
 
 
