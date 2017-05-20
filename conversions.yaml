@@ -15,22 +15,23 @@ types:
     pytorch: torch.LongTensor
 
 constructors:
-  - numpy: np.empty((2, 3))
-    pytorch: torch.Tensor(2, 3)
-  - numpy: np.empty_like(x)
-    pytorch: x.new(x.size()).type(x.type())
-  - numpy: np.eye
-    pytorch: torch.eye
-  - numpy: np.identity
-    pytorch: torch.eye
-  - numpy: np.ones
-    pytorch: torch.ones
-  - numpy: np.ones_like
-    pytorch: torch.ones(x.size()).type(x.type())
-  - numpy: np.zeros
-    pytorch: torch.zeros
-  - numpy: np.zeros_like
-    pytorch: torch.zeros(x.size()).type(x.type())
+  ones and zeros:
+    - numpy: np.empty((2, 3))
+      pytorch: torch.Tensor(2, 3)
+    - numpy: np.empty_like(x)
+      pytorch: x.new(x.size()).type(x.type())
+    - numpy: np.eye
+      pytorch: torch.eye
+    - numpy: np.identity
+      pytorch: torch.eye
+    - numpy: np.ones
+      pytorch: torch.ones
+    - numpy: np.ones_like
+      pytorch: torch.ones(x.size()).type(x.type())
+    - numpy: np.zeros
+      pytorch: torch.zeros
+    - numpy: np.zeros_like
+      pytorch: torch.zeros(x.size()).type(x.type())
 
 # - numpy: x.astype(np.int32)
 #   pytorch: x.type(torch.IntTensor)

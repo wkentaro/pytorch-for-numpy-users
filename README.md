@@ -4,7 +4,6 @@
 
 [PyTorch](https://github.com/pytorch/pytorch.git) version of [_Torch for Numpy users_](https://github.com/torch/torch7/wiki/Torch-for-Numpy-users).
 
-
 ## Types
 
 | Numpy        | PyTorch              |
@@ -18,6 +17,8 @@
 | `np.int64`   | `torch.LongTensor`   |
 
 ## Constructors
+
+### Ones and zeros
 
 | Numpy              | PyTorch                                |
 |:-------------------|:---------------------------------------|

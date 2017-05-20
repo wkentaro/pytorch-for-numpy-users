@@ -21,6 +21,26 @@ TEMPLATE = '''\
 here = osp.dirname(osp.abspath(__file__))
 
 
+def get_section(title, data, h=2):
+    if not isinstance(data, list):
+        content = '%s %s\n\n' % ('#' * h, title.capitalize())
+        for sub_title, sub_data in data.items():
+            content += get_section(sub_title, sub_data, h=h+1)
+        return content
+
+    headers = ['Numpy', 'PyTorch']
+    rows = []
+    for d in data:
+        rows.append([
+            '`' + d['numpy'] + '`',
+            '`' + d['pytorch'] + '`',
+        ])
+
+    content = '%s %s\n\n' % ('#' * h, title.capitalize())
+    content += tabulate.tabulate(rows, headers=headers, tablefmt='pipe') + '\n'
+    return content
+
+
 def get_contents():
     # keep order in yaml file
     yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
@@ -29,23 +49,11 @@ def get_contents():
 
     yaml_file = osp.join(here, 'conversions.yaml')
     data = yaml.load(open(yaml_file))
-    contents = ''
-    for section, data in data.items():
-        headers = ['Numpy', 'PyTorch']
-        rows = []
-        for d in data:
-            rows.append([
-                '`' + d['numpy'] + '`',
-                '`' + d['pytorch'] + '`',
-            ])
-        contents += '''
-## {title}
-
-{table}\n'''.format(
-            title=section.capitalize(),
-            table=tabulate.tabulate(rows, headers=headers, tablefmt='pipe'),
-        )
-    return contents
+    contents = []
+    for title, data in data.items():
+        section = get_section(title, data)
+        contents.append(section)
+    return '\n'.join(contents)
 
 
 print(TEMPLATE.format(contents=get_contents()))
