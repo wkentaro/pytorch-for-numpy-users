@@ -137,15 +137,15 @@ constructors:
     - numpy: x.clip
       pytorch:
     - numpy: x.round
-      pytorch: y.round
+      pytorch: x.round
     - numpy:
-      pytorch: y.floor
+      pytorch: x.floor
     - numpy: x.trace
-      pytorch: y.trace
+      pytorch: x.trace
     - numpy: x.sum
-      pytorch: y.sum
+      pytorch: x.sum
     - numpy: x.cumsum
-      pytorch: y.cumsum
+      pytorch: x.cumsum
     - numpy: x.mean
       pytorch: x.mean
     - numpy: x.std
@@ -155,9 +155,9 @@ constructors:
     - numpy: x.cumprod
       pytorch: x.cumprod
     - numpy: x.all
-      pytorch: (y == 1).sum() == y.nelement()
+      pytorch: (x == 1).sum() == x.nelement()
     - numpy: x.any
-      pytorch: (y == 1).sum() > 0
+      pytorch: (x == 1).sum() > 0
   arithmetic and comparison operations:
     - numpy: x.lt
       pytorch: x.lt
