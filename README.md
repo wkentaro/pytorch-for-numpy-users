@@ -9,11 +9,13 @@
 
 | Numpy        | PyTorch              |
 |:-------------|:---------------------|
-| `np.uint8`   | `torch.ByteTensor`   |
-| `np.int32`   | `torch.IntTensor`    |
-| `np.int64`   | `torch.LongTensor`   |
 | `np.float32` | `torch.FloatTensor`  |
 | `np.float64` | `torch.DoubleTensor` |
+| `np.int8`    | `torch.CharTensor`   |
+| `np.uint8`   | `torch.ByteTensor`   |
+| `np.int16`   | `torch.ShortTensor`  |
+| `np.int32`   | `torch.IntTensor`    |
+| `np.int64`   | `torch.LongTensor`   |
 
 ## Constructors
 

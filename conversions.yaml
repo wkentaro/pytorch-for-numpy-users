@@ -1,14 +1,18 @@
 types:
-  - numpy: np.uint8
-    pytorch: torch.ByteTensor
-  - numpy: np.int32
-    pytorch: torch.IntTensor
-  - numpy: np.int64
-    pytorch: torch.LongTensor
   - numpy: np.float32
     pytorch: torch.FloatTensor
   - numpy: np.float64
     pytorch: torch.DoubleTensor
+  - numpy: np.int8
+    pytorch: torch.CharTensor
+  - numpy: np.uint8
+    pytorch: torch.ByteTensor
+  - numpy: np.int16
+    pytorch: torch.ShortTensor
+  - numpy: np.int32
+    pytorch: torch.IntTensor
+  - numpy: np.int64
+    pytorch: torch.LongTensor
 
 constructors:
   - numpy: np.empty((2, 3))
