@@ -1,4 +1,4 @@
-# PyTorch for Numpy users
+# PyTorch for Numpy users.
 
 [![Build Status](https://travis-ci.com/wkentaro/pytorch-for-numpy-users.svg?token=zM5rExyvuRoJThsnqHAF&branch=master)](https://travis-ci.com/wkentaro/pytorch-for-numpy-users)
 
