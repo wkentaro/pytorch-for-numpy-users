@@ -1,8 +1,10 @@
 sudo: false
 
-dist: python
+dist: trusty
 
-language: generic
+language: python
+
+python: '2.7'
 
 script:
   - ./generate_readme.py > README.md.gen
