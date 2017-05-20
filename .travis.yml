@@ -1,0 +1,9 @@
+sudo: false
+
+dist: trusty
+
+language: generic
+
+script:
+  - ./generate_readme.py > README.md.gen
+  - diff README.md README.md.gen
