@@ -140,6 +140,8 @@ constructors:
       pytorch: x.round
     - numpy: np.floor(x)
       pytorch: x.floor()
+    - numpy: np.ceil(x)
+      pytorch: x.ceil()
     - numpy: x.trace
       pytorch: x.trace
     - numpy: x.sum
