@@ -112,24 +112,25 @@
 
 ### Calculation
 
-| Numpy       | PyTorch                               |
-|:------------|:--------------------------------------|
-| `x.min`     | `mins, indices = torch.min(x, [dim])` |
-| `x.argmin`  | `mins, indices = torch.min(x, [dim])` |
-| `x.max`     | `maxs, indices = torch.max(x, [dim])` |
-| `x.argmax`  | `maxs, indices = torch.max(x, [dim])` |
-| `x.clip`    |                                       |
-| `x.round`   | `y.round`                             |
-|             | `y.floor`                             |
-| `x.trace`   | `y.trace`                             |
-| `x.sum`     | `y.sum`                               |
-| `x.cumsum`  | `y.cumsum`                            |
-| `x.mean`    | `x.mean`                              |
-| `x.std`     | `x.std`                               |
-| `x.prod`    | `x.prod`                              |
-| `x.cumprod` | `x.cumprod`                           |
-| `x.all`     | `(y == 1).sum() == y.nelement()`      |
-| `x.any`     | `(y == 1).sum() > 0`                  |
+| Numpy         | PyTorch                               |
+|:--------------|:--------------------------------------|
+| `x.min`       | `mins, indices = torch.min(x, [dim])` |
+| `x.argmin`    | `mins, indices = torch.min(x, [dim])` |
+| `x.max`       | `maxs, indices = torch.max(x, [dim])` |
+| `x.argmax`    | `maxs, indices = torch.max(x, [dim])` |
+| `x.clip`      |                                       |
+| `x.round`     | `x.round`                             |
+| `np.floor(x)` | `x.floor()`                           |
+| `np.ceil(x)`  | `x.ceil()`                            |
+| `x.trace`     | `x.trace`                             |
+| `x.sum`       | `x.sum`                               |
+| `x.cumsum`    | `x.cumsum`                            |
+| `x.mean`      | `x.mean`                              |
+| `x.std`       | `x.std`                               |
+| `x.prod`      | `x.prod`                              |
+| `x.cumprod`   | `x.cumprod`                           |
+| `x.all`       | `(x == 1).sum() == x.nelement()`      |
+| `x.any`       | `(x == 1).sum() > 0`                  |
 
 ### Arithmetic and comparison operations
 
