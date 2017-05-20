@@ -138,8 +138,8 @@ constructors:
       pytorch:
     - numpy: x.round
       pytorch: x.round
-    - numpy:
-      pytorch: x.floor
+    - numpy: np.floor(x)
+      pytorch: x.floor()
     - numpy: x.trace
       pytorch: x.trace
     - numpy: x.sum
