@@ -61,7 +61,7 @@ constructors:
     - numpy: np.linspace
       pytorch: torch.linspace
     - numpy: np.logspace
-      pytorch: np.logspace
+      pytorch: torch.logspace
   building matrices:
     - numpy: np.diag
       pytorch: torch.diag

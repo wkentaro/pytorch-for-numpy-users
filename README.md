@@ -54,7 +54,7 @@
 | `np.arange(10)`        | `torch.range(0, 9)`       |
 | `np.arange(2, 3, 0.1)` | `torch.range(2, 2.9, 10)` |
 | `np.linspace`          | `torch.linspace`          |
-| `np.logspace`          | `np.logspace`             |
+| `np.logspace`          | `torch.logspace`          |
 
 ### Building matrices
 
