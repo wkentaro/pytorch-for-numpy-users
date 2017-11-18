@@ -118,7 +118,7 @@
 | `x.argmin`    | `mins, indices = torch.min(x, [dim])` |
 | `x.max`       | `maxs, indices = torch.max(x, [dim])` |
 | `x.argmax`    | `maxs, indices = torch.max(x, [dim])` |
-| `x.clip`      |                                       |
+| `x.clip`      | `x.clamp`                             |
 | `x.round`     | `x.round`                             |
 | `np.floor(x)` | `x.floor()`                           |
 | `np.ceil(x)`  | `x.ceil()`                            |
