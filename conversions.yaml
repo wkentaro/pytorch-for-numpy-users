@@ -135,7 +135,7 @@ constructors:
     - numpy: x.argmax
       pytorch: maxs, indices = torch.max(x, [dim])
     - numpy: x.clip
-      pytorch:
+      pytorch: x.clamp
     - numpy: x.round
       pytorch: x.round
     - numpy: np.floor(x)
