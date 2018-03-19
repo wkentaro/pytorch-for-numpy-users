@@ -84,7 +84,6 @@
 | `x[indices]`          | `x[torch.LongTensor(indices)]` |
 | `np.take(x, indices)` | `x[torch.LongTensor(indices)]` |
 | `x[x != 0]`           | `x[x != 0]`                    |
-| `x[::-1]`             | [workaround exists](https://github.com/pytorch/pytorch/issues/229)             |
 
 ### Shape manipulation
 
@@ -100,16 +99,17 @@
 
 ### Item selection and manipulation
 
-| Numpy        | PyTorch                                  |
-|:-------------|:-----------------------------------------|
-| `np.put`     |                                          |
-| `x.repeat`   |                                          |
-| `x.tile`     | `x.repeat`                               |
-| `np.choose`  |                                          |
-| `np.sort`    | `sorted, indices = torch.sort(x, [dim])` |
-| `np.argsort` | `sorted, indices = torch.sort(x, [dim])` |
-| `np.nonzero` | `torch.nonzero`                          |
-| `np.where`   | `torch.nonzero`                          |
+| Numpy        | PyTorch                                                       |
+|:-------------|:--------------------------------------------------------------|
+| `np.put`     |                                                               |
+| `x.repeat`   |                                                               |
+| `x.tile`     | `x.repeat`                                                    |
+| `np.choose`  |                                                               |
+| `np.sort`    | `sorted, indices = torch.sort(x, [dim])`                      |
+| `np.argsort` | `sorted, indices = torch.sort(x, [dim])`                      |
+| `np.nonzero` | `torch.nonzero`                                               |
+| `np.where`   | `torch.nonzero`                                               |
+| `x[::-1]`    | [a workaround](https://github.com/pytorch/pytorch/issues/229) |
 
 ### Calculation
 
