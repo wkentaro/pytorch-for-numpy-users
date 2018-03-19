@@ -84,6 +84,7 @@
 | `x[indices]`          | `x[torch.LongTensor(indices)]` |
 | `np.take(x, indices)` | `x[torch.LongTensor(indices)]` |
 | `x[x != 0]`           | `x[x != 0]`                    |
+| `x[::-1]`             | [workaround exists](https://github.com/pytorch/pytorch/issues/229)             |
 
 ### Shape manipulation
 
