@@ -19,7 +19,16 @@ def get_section(title, data, h=2):
     rows = []
     for d in data:
         numpy = '`' + d['numpy'] + '`' if d['numpy'] is not None else ''
-        pytorch = '`' + d['pytorch'] + '`'  if d['pytorch'] is not None else ''
+        if isinstance(d['pytorch'], dict):
+            content = d['pytorch']['content']
+            is_code = d['pytorch']['is_code']
+        elif d['pytorch'] is None:
+            content = ''
+            is_code = False
+        else:
+            content = d['pytorch']
+            is_code = True
+        pytorch = '`' + content + '`' if is_code else content
         rows.append([numpy, pytorch])
 
     content = '%s %s\n\n' % ('#' * h, title.capitalize())

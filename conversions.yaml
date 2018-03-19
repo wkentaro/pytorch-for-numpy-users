@@ -125,6 +125,10 @@ constructors:
       pytorch: torch.nonzero
     - numpy: np.where
       pytorch: torch.nonzero
+    - numpy: x[::-1]
+      pytorch:
+        content: '[a workaround](https://github.com/pytorch/pytorch/issues/229)'
+        is_code: false
   calculation:
     - numpy: x.min
       pytorch: mins, indices = torch.min(x, [dim])
