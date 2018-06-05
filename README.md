@@ -7,44 +7,46 @@
 
 ## Types
 
-| Numpy        | PyTorch              |
-|:-------------|:---------------------|
-| `np.ndarray` | `torch.Tensor`       |
-| `np.float32` | `torch.FloatTensor`  |
-| `np.float64` | `torch.DoubleTensor` |
-| `np.int8`    | `torch.CharTensor`   |
-| `np.uint8`   | `torch.ByteTensor`   |
-| `np.int16`   | `torch.ShortTensor`  |
-| `np.int32`   | `torch.IntTensor`    |
-| `np.int64`   | `torch.LongTensor`   |
+| Numpy        | PyTorch                                                      |
+|:-------------|:-------------------------------------------------------------|
+| `np.ndarray` | `torch.Tensor or torch.tensor`                               |
+| `np.float32` | `torch.FloatTensor or torch.tensor(x, dtype = torch.float)`  |
+| `np.float64` | `torch.DoubleTensor or torch.tensor(x, dtype = torch.double` |
+| `np.float16` | `torch.HalfTensor or torch.tensor(x, dtype = torch.half)`    |
+| `np.int8`    | `torch.CharTensor or torch.tensor(x, dtype = torch.int8)`    |
+| `np.uint8`   | `torch.ByteTensor or torch.tensor(x, dtype = torch.uint8)`   |
+| `np.int16`   | `torch.ShortTensor or torch.tensor(x, dtype = torch.short)`  |
+| `np.int32`   | `torch.IntTensor or torch.tensor(x, dtype = torch.int)`      |
+| `np.int64`   | `torch.LongTensor or torch.tensor(x, dtype = torch.long)`    |
 
 
 ## Constructors
 
 ### Ones and zeros
 
-| Numpy              | PyTorch                                |
-|:-------------------|:---------------------------------------|
-| `np.empty((2, 3))` | `torch.Tensor(2, 3)`                   |
-| `np.empty_like(x)` | `x.new(x.size()).type(x.type())`       |
-| `np.eye`           | `torch.eye`                            |
-| `np.identity`      | `torch.eye`                            |
-| `np.ones`          | `torch.ones`                           |
-| `np.ones_like`     | `torch.ones(x.size()).type(x.type())`  |
-| `np.zeros`         | `torch.zeros`                          |
-| `np.zeros_like`    | `torch.zeros(x.size()).type(x.type())` |
+| Numpy              | PyTorch               |
+|:-------------------|:----------------------|
+| `np.empty((2, 3))` | `torch.empty((2, 3))` |
+| `np.empty_like(x)` | `torch.empty_like(x)` |
+| `np.eye`           | `torch.eye`           |
+| `np.identity`      | `torch.eye`           |
+| `np.ones`          | `torch.ones`          |
+| `np.ones_like`     | `torch.ones_like`     |
+| `np.zeros`         | `torch.zeros`         |
+| `np.zeros_like`    | `torch.zeros_like`    |
 
 ### From existing data
 
 | Numpy                        | PyTorch                             |
 |:-----------------------------|:------------------------------------|
-| `np.array([[1, 2], [3, 4]])` | `torch.Tensor([[1, 2], [3, 4])`     |
+| `np.array([[1, 2], [3, 4]])` | `torch.tensor([[1, 2], [3, 4])`     |
 | `x.copy()`                   | `x.clone()`                         |
-| `np.fromfile(file)`          | `torch.Tensor(torch.Storage(file))` |
+| `np.fromfile(file)`          | `torch.tensor(torch.Storage(file))` |
 | `np.frombuffer`              |                                     |
 | `np.fromfunction`            |                                     |
 | `np.fromiter`                |                                     |
 | `np.fromstring`              |                                     |
+| `np.load`                    | `torch.load`                        |
 | `np.loadtxt`                 |                                     |
 | `np.concatenate`             | `torch.cat`                         |
 
@@ -52,8 +54,8 @@
 
 | Numpy                  | PyTorch                   |
 |:-----------------------|:--------------------------|
-| `np.arange(10)`        | `torch.range(0, 9)`       |
-| `np.arange(2, 3, 0.1)` | `torch.range(2, 2.9, 10)` |
+| `np.arange(10)`        | `torch.arange(10)`        |
+| `np.arange(2, 3, 0.1)` | `torch.arange(2, 3, 0.1)` |
 | `np.linspace`          | `torch.linspace`          |
 | `np.logspace`          | `torch.logspace`          |
 
@@ -69,81 +71,79 @@
 
 | Numpy       | PyTorch        |
 |:------------|:---------------|
-| `x.shape`   | `x.size()`     |
+| `x.shape`   | `x.shape`      |
 | `x.strides` | `x.stride()`   |
 | `x.ndim`    | `x.dim()`      |
-| `x.data`    | `x.data()`     |
+| `x.data`    | `x.data`       |
 | `x.size`    | `x.nelement()` |
-| `x.dtype`   | `x.type()`     |
+| `x.dtype`   | `x.dtype`      |
 
 ### Indexing
 
-| Numpy                 | PyTorch                        |
-|:----------------------|:-------------------------------|
-| `x[0]`                | `x[0]`                         |
-| `x[:, 0]`             | `x[:, 0]`                      |
-| `x[indices]`          | `x[torch.LongTensor(indices)]` |
-| `np.take(x, indices)` | `x[torch.LongTensor(indices)]` |
-| `x[x != 0]`           | `x[x != 0]`                    |
+| Numpy                 | PyTorch                                    |
+|:----------------------|:-------------------------------------------|
+| `x[0]`                | `x[0]`                                     |
+| `x[:, 0]`             | `x[:, 0]`                                  |
+| `x[indices]`          | `x[indices]`                               |
+| `np.take(x, indices)` | `torch.take(x, torch.LongTensor(indices))` |
+| `x[x != 0]`           | `x[x != 0]`                                |
 
 ### Shape manipulation
 
-| Numpy              | PyTorch          |
-|:-------------------|:-----------------|
-| `x.reshape`        | `x.view`         |
-| `x.resize`         | `x.resize_`      |
-|                    | `x.resize_as_`   |
-| `x.transpose`      | `x.permute`      |
-| `x.flatten()`      | `x.view(-1)`     |
-| `x.squeeze`        | `x.squeeze`      |
-| `x[:, np.newaxis]` | `x.unsqueeze(1)` |
+| Numpy                                      | PyTorch                    |
+|:-------------------------------------------|:---------------------------|
+| `x.reshape`                                | `x.reshape or x.view`      |
+| `x.resize()`                               | `x.resize_`                |
+|                                            | `x.resize_as_`             |
+| `x.transpose`                              | `x.transpose or x.permute` |
+| `x.flatten`                                | `x.view(-1)`               |
+| `x.squeeze()`                              | `x.squeeze()`              |
+| `x[:, np.newaxis] or np.expand_dims(x, 1)` | `x.unsqueeze(1)`           |
 
 ### Item selection and manipulation
 
 | Numpy        | PyTorch                                                       |
 |:-------------|:--------------------------------------------------------------|
 | `np.put`     |                                                               |
-| `x.repeat`   |                                                               |
-| `x.tile`     | `x.repeat`                                                    |
+| `x.put`      | `x.put_`                                                      |
+| `x.repeat`   | `x.repeat`                                                    |
+| `np.tile`    |                                                               |
 | `np.choose`  |                                                               |
 | `np.sort`    | `sorted, indices = torch.sort(x, [dim])`                      |
 | `np.argsort` | `sorted, indices = torch.sort(x, [dim])`                      |
 | `np.nonzero` | `torch.nonzero`                                               |
-| `np.where`   | `torch.nonzero`                                               |
+| `np.where`   | `torch.where`                                                 |
 | `x[::-1]`    | [a workaround](https://github.com/pytorch/pytorch/issues/229) |
 
 ### Calculation
 
-| Numpy         | PyTorch                               |
-|:--------------|:--------------------------------------|
-| `x.min`       | `mins, indices = torch.min(x, [dim])` |
-| `x.argmin`    | `mins, indices = torch.min(x, [dim])` |
-| `x.max`       | `maxs, indices = torch.max(x, [dim])` |
-| `x.argmax`    | `maxs, indices = torch.max(x, [dim])` |
-| `x.clip`      | `x.clamp`                             |
-| `x.round`     | `x.round`                             |
-| `np.floor(x)` | `x.floor()`                           |
-| `np.ceil(x)`  | `x.ceil()`                            |
-| `x.trace`     | `x.trace`                             |
-| `x.sum`       | `x.sum`                               |
-| `x.cumsum`    | `x.cumsum`                            |
-| `x.mean`      | `x.mean`                              |
-| `x.std`       | `x.std`                               |
-| `x.prod`      | `x.prod`                              |
-| `x.cumprod`   | `x.cumprod`                           |
-| `x.all`       | `(x == 1).sum() == x.nelement()`      |
-| `x.any`       | `(x == 1).sum() > 0`                  |
+| Numpy         | PyTorch                          |
+|:--------------|:---------------------------------|
+| `x.min`       | `x.min`                          |
+| `x.argmin`    | `x.argmin`                       |
+| `x.max`       | `x.max`                          |
+| `x.argmax`    | `x.argmax`                       |
+| `x.clip`      | `x.clamp`                        |
+| `x.round`     | `x.round`                        |
+| `np.floor(x)` | `torch.floor(x) or x.floor()`    |
+| `np.ceil(x)`  | `torch.ceil() or x.ceil()`       |
+| `x.trace`     | `x.trace`                        |
+| `x.sum`       | `x.sum`                          |
+| `x.cumsum`    | `x.cumsum`                       |
+| `x.mean`      | `x.mean`                         |
+| `x.std`       | `x.std`                          |
+| `x.prod`      | `x.prod`                         |
+| `x.cumprod`   | `x.cumprod`                      |
+| `x.all`       | `(x == 1).sum() == x.nelement()` |
+| `x.any`       | `(x == 1).sum() > 0`             |
 
 ### Arithmetic and comparison operations
 
-| Numpy   | PyTorch   |
-|:--------|:----------|
-| `x.lt`  | `x.lt`    |
-| `x.le`  | `x.le`    |
-| `x.gt`  | `x.gt`    |
-| `x.ge`  | `x.ge`    |
-| `x.eq`  | `x.eq`    |
-| `x.ne`  | `x.ne`    |
-
-
-
+| Numpy              | PyTorch   |
+|:-------------------|:----------|
+| `np.less`          | `x.lt`    |
+| `np.less_equal`    | `x.le`    |
+| `np.greater`       | `x.gt`    |
+| `np.greater_equal` | `x.ge`    |
+| `np.equal`         | `x.eq`    |
+| `np.not_equal`     | `x.ne`    |

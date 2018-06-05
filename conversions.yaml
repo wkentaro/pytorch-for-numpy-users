@@ -1,27 +1,29 @@
 types:
   - numpy: np.ndarray
-    pytorch: torch.Tensor
+    pytorch: torch.Tensor or torch.tensor
   - numpy: np.float32
-    pytorch: torch.FloatTensor
+    pytorch: torch.FloatTensor or torch.tensor(x, dtype = torch.float)
   - numpy: np.float64
-    pytorch: torch.DoubleTensor
+    pytorch: torch.DoubleTensor or torch.tensor(x, dtype = torch.double
+  - numpy: np.float16
+    pytorch: torch.HalfTensor or torch.tensor(x, dtype = torch.half)
   - numpy: np.int8
-    pytorch: torch.CharTensor
+    pytorch: torch.CharTensor or torch.tensor(x, dtype = torch.int8)
   - numpy: np.uint8
-    pytorch: torch.ByteTensor
+    pytorch: torch.ByteTensor or torch.tensor(x, dtype = torch.uint8)
   - numpy: np.int16
-    pytorch: torch.ShortTensor
+    pytorch: torch.ShortTensor or torch.tensor(x, dtype = torch.short)
   - numpy: np.int32
-    pytorch: torch.IntTensor
+    pytorch: torch.IntTensor or torch.tensor(x, dtype = torch.int)
   - numpy: np.int64
-    pytorch: torch.LongTensor
+    pytorch: torch.LongTensor or torch.tensor(x, dtype = torch.long)
 
 constructors:
   ones and zeros:
     - numpy: np.empty((2, 3))
-      pytorch: torch.Tensor(2, 3)
+      pytorch: torch.empty((2, 3))
     - numpy: np.empty_like(x)
-      pytorch: x.new(x.size()).type(x.type())
+      pytorch: torch.empty_like(x)
     - numpy: np.eye
       pytorch: torch.eye
     - numpy: np.identity
@@ -29,18 +31,18 @@ constructors:
     - numpy: np.ones
       pytorch: torch.ones
     - numpy: np.ones_like
-      pytorch: torch.ones(x.size()).type(x.type())
+      pytorch: torch.ones_like
     - numpy: np.zeros
       pytorch: torch.zeros
     - numpy: np.zeros_like
-      pytorch: torch.zeros(x.size()).type(x.type())
+      pytorch: torch.zeros_like
   from existing data:
     - numpy: np.array([[1, 2], [3, 4]])
-      pytorch: torch.Tensor([[1, 2], [3, 4])
+      pytorch: torch.tensor([[1, 2], [3, 4])
     - numpy: x.copy()
       pytorch: x.clone()
     - numpy: np.fromfile(file)
-      pytorch: torch.Tensor(torch.Storage(file))
+      pytorch: torch.tensor(torch.Storage(file))
     - numpy: np.frombuffer
       pytorch:
     - numpy: np.fromfunction
@@ -49,15 +51,17 @@ constructors:
       pytorch:
     - numpy: np.fromstring
       pytorch:
+    - numpy: np.load
+      pytorch: torch.load
     - numpy: np.loadtxt
       pytorch:
     - numpy: np.concatenate
       pytorch: torch.cat
   numerical ranges:
     - numpy: np.arange(10)
-      pytorch: torch.range(0, 9)
+      pytorch: torch.arange(10)
     - numpy: np.arange(2, 3, 0.1)
-      pytorch: torch.range(2, 2.9, 10)
+      pytorch: torch.arange(2, 3, 0.1)
     - numpy: np.linspace
       pytorch: torch.linspace
     - numpy: np.logspace
@@ -71,50 +75,52 @@ constructors:
       pytorch: torch.triu
   attributes:
     - numpy: x.shape
-      pytorch: x.size()
+      pytorch: x.shape
     - numpy: x.strides
       pytorch: x.stride()
     - numpy: x.ndim
       pytorch: x.dim()
     - numpy: x.data
-      pytorch: x.data()
+      pytorch: x.data
     - numpy: x.size
       pytorch: x.nelement()
     - numpy: x.dtype
-      pytorch: x.type()
+      pytorch: x.dtype
   indexing:
     - numpy: x[0]
       pytorch: x[0]
     - numpy: x[:, 0]
       pytorch: x[:, 0]
     - numpy: x[indices]
-      pytorch: x[torch.LongTensor(indices)]
+      pytorch: x[indices]
     - numpy: np.take(x, indices)
-      pytorch: x[torch.LongTensor(indices)]
+      pytorch: torch.take(x, torch.LongTensor(indices))
     - numpy: x[x != 0]
       pytorch: x[x != 0]
   shape manipulation:
     - numpy: x.reshape
-      pytorch: x.view
-    - numpy: x.resize
+      pytorch: x.reshape or x.view
+    - numpy: x.resize()
       pytorch: x.resize_
     - numpy:
       pytorch: x.resize_as_
     - numpy: x.transpose
-      pytorch: x.permute
-    - numpy: x.flatten()
+      pytorch: x.transpose or x.permute
+    - numpy: x.flatten
       pytorch: x.view(-1)
-    - numpy: x.squeeze
-      pytorch: x.squeeze
-    - numpy: x[:, np.newaxis]
+    - numpy: x.squeeze()
+      pytorch: x.squeeze()
+    - numpy: x[:, np.newaxis] or np.expand_dims(x, 1)
       pytorch: x.unsqueeze(1)
   item selection and manipulation:
     - numpy: np.put
       pytorch:
+    - numpy: x.put
+      pytorch: x.put_
     - numpy: x.repeat
-      pytorch:
-    - numpy: x.tile
       pytorch: x.repeat
+    - numpy: np.tile
+      pytorch: 
     - numpy: np.choose
       pytorch:
     - numpy: np.sort
@@ -124,28 +130,28 @@ constructors:
     - numpy: np.nonzero
       pytorch: torch.nonzero
     - numpy: np.where
-      pytorch: torch.nonzero
+      pytorch: torch.where
     - numpy: x[::-1]
       pytorch:
         content: '[a workaround](https://github.com/pytorch/pytorch/issues/229)'
         is_code: false
   calculation:
     - numpy: x.min
-      pytorch: mins, indices = torch.min(x, [dim])
+      pytorch: x.min
     - numpy: x.argmin
-      pytorch: mins, indices = torch.min(x, [dim])
+      pytorch: x.argmin
     - numpy: x.max
-      pytorch: maxs, indices = torch.max(x, [dim])
+      pytorch: x.max
     - numpy: x.argmax
-      pytorch: maxs, indices = torch.max(x, [dim])
+      pytorch: x.argmax
     - numpy: x.clip
       pytorch: x.clamp
     - numpy: x.round
       pytorch: x.round
     - numpy: np.floor(x)
-      pytorch: x.floor()
+      pytorch: torch.floor(x) or x.floor()
     - numpy: np.ceil(x)
-      pytorch: x.ceil()
+      pytorch: torch.ceil() or x.ceil()
     - numpy: x.trace
       pytorch: x.trace
     - numpy: x.sum
@@ -165,15 +171,15 @@ constructors:
     - numpy: x.any
       pytorch: (x == 1).sum() > 0
   arithmetic and comparison operations:
-    - numpy: x.lt
+    - numpy: np.less
       pytorch: x.lt
-    - numpy: x.le
+    - numpy: np.less_equal
       pytorch: x.le
-    - numpy: x.gt
+    - numpy: np.greater
       pytorch: x.gt
-    - numpy: x.ge
+    - numpy: np.greater_equal
       pytorch: x.ge
-    - numpy: x.eq
+    - numpy: np.equal
       pytorch: x.eq
-    - numpy: x.ne
+    - numpy: np.not_equal
       pytorch: x.ne
