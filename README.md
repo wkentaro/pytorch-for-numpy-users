@@ -147,3 +147,6 @@
 | `np.greater_equal` | `x.ge`    |
 | `np.equal`         | `x.eq`    |
 | `np.not_equal`     | `x.ne`    |
+
+
+
