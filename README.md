@@ -104,18 +104,18 @@ We assume you use the latest PyTorch and Numpy.
 
 ### Item selection and manipulation
 
-| Numpy        | PyTorch                                                       |
-|:-------------|:--------------------------------------------------------------|
-| `np.put`     |                                                               |
-| `x.put`      | `x.put_`                                                      |
-| `x.repeat`   | `x.repeat`                                                    |
-| `np.tile`    |                                                               |
-| `np.choose`  |                                                               |
-| `np.sort`    | `sorted, indices = torch.sort(x, [dim])`                      |
-| `np.argsort` | `sorted, indices = torch.sort(x, [dim])`                      |
-| `np.nonzero` | `torch.nonzero`                                               |
-| `np.where`   | `torch.where`                                                 |
-| `x[::-1]`    | [a workaround](https://github.com/pytorch/pytorch/issues/229) |
+| Numpy                | PyTorch                                                       |
+|:---------------------|:--------------------------------------------------------------|
+| `np.put`             |                                                               |
+| `x.put`              | `x.put_`                                                      |
+| `x.repeat`           |                                                               |
+| `np.tile(x, (3, 2))` | `x.repeat(3, 2)`                                              |
+| `np.choose`          |                                                               |
+| `np.sort`            | `sorted, indices = torch.sort(x, [dim])`                      |
+| `np.argsort`         | `sorted, indices = torch.sort(x, [dim])`                      |
+| `np.nonzero`         | `torch.nonzero`                                               |
+| `np.where`           | `torch.where`                                                 |
+| `x[::-1]`            | [a workaround](https://github.com/pytorch/pytorch/issues/229) |
 
 ### Calculation
 
