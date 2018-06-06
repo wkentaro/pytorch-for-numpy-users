@@ -120,9 +120,9 @@ constructors:
     - numpy: x.put
       pytorch: x.put_
     - numpy: x.repeat
-      pytorch: x.repeat
-    - numpy: np.tile
-      pytorch: 
+      pytorch:
+    - numpy: np.tile(x, (3, 2))
+      pytorch: x.repeat(3, 2)
     - numpy: np.choose
       pytorch:
     - numpy: np.sort
