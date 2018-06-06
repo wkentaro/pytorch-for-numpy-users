@@ -8,17 +8,17 @@ We assume you use the latest PyTorch and Numpy.
 
 ## Types
 
-| Numpy        | PyTorch                                                      |
-|:-------------|:-------------------------------------------------------------|
-| `np.ndarray` | `torch.Tensor or torch.tensor`                               |
-| `np.float32` | `torch.FloatTensor or torch.tensor(x, dtype = torch.float)`  |
-| `np.float64` | `torch.DoubleTensor or torch.tensor(x, dtype = torch.double` |
-| `np.float16` | `torch.HalfTensor or torch.tensor(x, dtype = torch.half)`    |
-| `np.int8`    | `torch.CharTensor or torch.tensor(x, dtype = torch.int8)`    |
-| `np.uint8`   | `torch.ByteTensor or torch.tensor(x, dtype = torch.uint8)`   |
-| `np.int16`   | `torch.ShortTensor or torch.tensor(x, dtype = torch.short)`  |
-| `np.int32`   | `torch.IntTensor or torch.tensor(x, dtype = torch.int)`      |
-| `np.int64`   | `torch.LongTensor or torch.tensor(x, dtype = torch.long)`    |
+| Numpy        | PyTorch                         |
+|:-------------|:--------------------------------|
+| `np.ndarray` | `torch.Tensor`                  |
+| `np.float32` | `torch.float32 or torch.float`  |
+| `np.float64` | `torch.float64 or torch.double` |
+| `np.float16` | `torch.float16 or torch.half`   |
+| `np.int8`    | `torch.int8`                    |
+| `np.uint8`   | `torch.uint8`                   |
+| `np.int16`   | `torch.int16 or torch.short`    |
+| `np.int32`   | `torch.int32 or torch.int`      |
+| `np.int64`   | `torch.int64 or torch.long`     |
 
 
 ## Constructors
@@ -27,7 +27,7 @@ We assume you use the latest PyTorch and Numpy.
 
 | Numpy              | PyTorch               |
 |:-------------------|:----------------------|
-| `np.empty((2, 3))` | `torch.empty((2, 3))` |
+| `np.empty((2, 3))` | `torch.empty(2, 3)`   |
 | `np.empty_like(x)` | `torch.empty_like(x)` |
 | `np.eye`           | `torch.eye`           |
 | `np.identity`      | `torch.eye`           |
@@ -38,18 +38,19 @@ We assume you use the latest PyTorch and Numpy.
 
 ### From existing data
 
-| Numpy                        | PyTorch                             |
-|:-----------------------------|:------------------------------------|
-| `np.array([[1, 2], [3, 4]])` | `torch.tensor([[1, 2], [3, 4])`     |
-| `x.copy()`                   | `x.clone()`                         |
-| `np.fromfile(file)`          | `torch.tensor(torch.Storage(file))` |
-| `np.frombuffer`              |                                     |
-| `np.fromfunction`            |                                     |
-| `np.fromiter`                |                                     |
-| `np.fromstring`              |                                     |
-| `np.load`                    | `torch.load`                        |
-| `np.loadtxt`                 |                                     |
-| `np.concatenate`             | `torch.cat`                         |
+| Numpy                                                              | PyTorch                                         |
+|:-------------------------------------------------------------------|:------------------------------------------------|
+| `np.array([[1, 2], [3, 4]])`                                       | `torch.tensor([[1, 2], [3, 4])`                 |
+| `np.array([3.2, 4.3], dtype=np.float16) or np.float16([3.2, 4.3])` | `torch.tensor([3.2, 4.3], dtype=torch.float16)` |
+| `x.copy()`                                                         | `x.clone()`                                     |
+| `np.fromfile(file)`                                                | `torch.tensor(torch.Storage(file))`             |
+| `np.frombuffer`                                                    |                                                 |
+| `np.fromfunction`                                                  |                                                 |
+| `np.fromiter`                                                      |                                                 |
+| `np.fromstring`                                                    |                                                 |
+| `np.load`                                                          | `torch.load`                                    |
+| `np.loadtxt`                                                       |                                                 |
+| `np.concatenate`                                                   | `torch.cat`                                     |
 
 ### Numerical ranges
 

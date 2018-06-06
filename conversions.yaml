@@ -1,27 +1,27 @@
 types:
   - numpy: np.ndarray
-    pytorch: torch.Tensor or torch.tensor
+    pytorch: torch.Tensor
   - numpy: np.float32
-    pytorch: torch.FloatTensor or torch.tensor(x, dtype = torch.float)
+    pytorch: torch.float32 or torch.float
   - numpy: np.float64
-    pytorch: torch.DoubleTensor or torch.tensor(x, dtype = torch.double
+    pytorch: torch.float64 or torch.double
   - numpy: np.float16
-    pytorch: torch.HalfTensor or torch.tensor(x, dtype = torch.half)
+    pytorch: torch.float16 or torch.half
   - numpy: np.int8
-    pytorch: torch.CharTensor or torch.tensor(x, dtype = torch.int8)
+    pytorch: torch.int8
   - numpy: np.uint8
-    pytorch: torch.ByteTensor or torch.tensor(x, dtype = torch.uint8)
+    pytorch: torch.uint8
   - numpy: np.int16
-    pytorch: torch.ShortTensor or torch.tensor(x, dtype = torch.short)
+    pytorch: torch.int16 or torch.short
   - numpy: np.int32
-    pytorch: torch.IntTensor or torch.tensor(x, dtype = torch.int)
+    pytorch: torch.int32 or torch.int
   - numpy: np.int64
-    pytorch: torch.LongTensor or torch.tensor(x, dtype = torch.long)
+    pytorch: torch.int64 or torch.long
 
 constructors:
   ones and zeros:
     - numpy: np.empty((2, 3))
-      pytorch: torch.empty((2, 3))
+      pytorch: torch.empty(2, 3)
     - numpy: np.empty_like(x)
       pytorch: torch.empty_like(x)
     - numpy: np.eye
@@ -39,6 +39,8 @@ constructors:
   from existing data:
     - numpy: np.array([[1, 2], [3, 4]])
       pytorch: torch.tensor([[1, 2], [3, 4])
+    - numpy: np.array([3.2, 4.3], dtype=np.float16) or np.float16([3.2, 4.3])
+      pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
     - numpy: x.copy()
       pytorch: x.clone()
     - numpy: np.fromfile(file)
