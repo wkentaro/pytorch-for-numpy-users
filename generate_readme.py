@@ -44,7 +44,8 @@ def get_contents():
             collections.OrderedDict(loader.construct_pairs(node)))
 
     yaml_file = osp.join(here, 'conversions.yaml')
-    data = yaml.load(open(yaml_file))
+    with open(yaml_file) as f:
+        data = yaml.load(f)
     contents = []
     for title, data in data.items():
         section = get_section(title, data)
@@ -56,7 +57,8 @@ here = osp.dirname(osp.abspath(__file__))
 
 
 def main():
-    template = open(osp.join(here, 'README.md.in')).read()
+    with open(osp.join(here, 'README.md.in')) as f:
+        template = f.read()
     template = string.Template(template)
     readme = template.substitute(contents=get_contents())
     print(readme)
