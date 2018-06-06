@@ -39,9 +39,11 @@ def get_section(title, data, h=2):
 
 def get_contents():
     # keep order in yaml file
-    yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-        lambda loader, node: \
-            collections.OrderedDict(loader.construct_pairs(node)))
+    yaml.add_constructor(
+        yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+        lambda loader, node:
+            collections.OrderedDict(loader.construct_pairs(node)),
+    )
 
     yaml_file = osp.join(here, 'conversions.yaml')
     with open(yaml_file) as f:
