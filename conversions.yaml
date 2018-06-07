@@ -135,7 +135,7 @@ constructors:
       pytorch: torch.where
     - numpy: x[::-1]
       pytorch:
-        content: '[a workaround](https://github.com/pytorch/pytorch/issues/229)'
+        content: '<a href="https://github.com/pytorch/pytorch/issues/229">a workaround</a>'
         is_code: false
   calculation:
     - numpy: x.min
