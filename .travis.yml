@@ -12,7 +12,7 @@ script:
 
 after_success:
   - ./generate_readme.py > README.md
-  - .travis_push.sh
+  - ./.travis_push.sh
 
 branches:
   only:
