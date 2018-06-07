@@ -2,21 +2,21 @@ types:
   - numpy: np.ndarray
     pytorch: torch.Tensor
   - numpy: np.float32
-    pytorch: torch.float32 or torch.float
+    pytorch: torch.float32; torch.float
   - numpy: np.float64
-    pytorch: torch.float64 or torch.double
+    pytorch: torch.float64; torch.double
   - numpy: np.float16
-    pytorch: torch.float16 or torch.half
+    pytorch: torch.float16; torch.half
   - numpy: np.int8
     pytorch: torch.int8
   - numpy: np.uint8
     pytorch: torch.uint8
   - numpy: np.int16
-    pytorch: torch.int16 or torch.short
+    pytorch: torch.int16; torch.short
   - numpy: np.int32
-    pytorch: torch.int32 or torch.int
+    pytorch: torch.int32; torch.int
   - numpy: np.int64
-    pytorch: torch.int64 or torch.long
+    pytorch: torch.int64; torch.long
 
 constructors:
   ones and zeros:
@@ -38,13 +38,17 @@ constructors:
       pytorch: torch.zeros_like
   from existing data:
     - numpy: np.array([[1, 2], [3, 4]])
-      pytorch: torch.tensor([[1, 2], [3, 4])
-    - numpy: np.array([3.2, 4.3], dtype=np.float16) or np.float16([3.2, 4.3])
+      pytorch: torch.tensor([[1, 2], [3, 4]])
+    - numpy: np.array([3.2, 4.3], dtype=np.float16); np.float16([3.2, 4.3])
       pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
     - numpy: x.copy()
       pytorch: x.clone()
-    - numpy: np.fromfile(file)
-      pytorch: torch.tensor(torch.Storage(file))
+    - numpy:
+        content: np.fromfile(file)
+        skip_test: true
+      pytorch:
+        content: torch.tensor(torch.Storage(file))
+        skip_test: true
     - numpy: np.frombuffer
       pytorch:
     - numpy: np.fromfunction
@@ -93,15 +97,23 @@ constructors:
       pytorch: x[0]
     - numpy: x[:, 0]
       pytorch: x[:, 0]
-    - numpy: x[indices]
-      pytorch: x[indices]
-    - numpy: np.take(x, indices)
-      pytorch: torch.take(x, torch.LongTensor(indices))
+    - numpy:
+        content: x[indices]
+        skip_test: true
+      pytorch:
+        content: x[indices]
+        skip_test: true
+    - numpy:
+        content: np.take(x, indices)
+        skip_test: true
+      pytorch:
+        content: torch.take(x, torch.LongTensor(indices))
+        skip_test: true
     - numpy: x[x != 0]
       pytorch: x[x != 0]
   shape manipulation:
     - numpy: x.reshape
-      pytorch: x.reshape or x.view
+      pytorch: x.reshape; x.view
     - numpy: x.resize()
       pytorch: x.resize_
     - numpy:
@@ -112,7 +124,7 @@ constructors:
       pytorch: x.view(-1)
     - numpy: x.squeeze()
       pytorch: x.squeeze()
-    - numpy: x[:, np.newaxis] or np.expand_dims(x, 1)
+    - numpy: x[:, np.newaxis]; np.expand_dims(x, 1)
       pytorch: x.unsqueeze(1)
   item selection and manipulation:
     - numpy: np.put
@@ -132,9 +144,13 @@ constructors:
     - numpy: np.choose
       pytorch:
     - numpy: np.sort
-      pytorch: sorted, indices = torch.sort(x, [dim])
+      pytorch:
+        content: sorted, indices = torch.sort(x, [dim])
+        skip_test: true
     - numpy: np.argsort
-      pytorch: sorted, indices = torch.sort(x, [dim])
+      pytorch:
+        content: sorted, indices = torch.sort(x, [dim])
+        skip_test: true
     - numpy: np.nonzero
       pytorch: torch.nonzero
     - numpy: np.where
@@ -157,9 +173,13 @@ constructors:
     - numpy: x.round
       pytorch: x.round
     - numpy: np.floor(x)
-      pytorch: torch.floor(x) or x.floor()
+      pytorch:
+        content: torch.floor(x); x.floor()
+        skip_test: true
     - numpy: np.ceil(x)
-      pytorch: torch.ceil() or x.ceil()
+      pytorch:
+        content: torch.ceil(x); x.ceil()
+        skip_test: true
     - numpy: x.trace
       pytorch: x.trace
     - numpy: x.sum

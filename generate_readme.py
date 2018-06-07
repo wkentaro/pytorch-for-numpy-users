@@ -23,7 +23,7 @@ def get_section(title, data, h=2):
         for key in keys:
             if isinstance(d[key], dict):
                 content = d[key]['content']
-                is_code = d[key]['is_code']
+                is_code = d[key].get('is_code', True)
             elif d[key] is None:
                 content = ''
                 is_code = False
