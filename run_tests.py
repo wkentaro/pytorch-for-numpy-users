@@ -10,14 +10,11 @@ import subprocess
 import yaml
 
 
-def parse(data, parsed=None):
-    if parsed is None:
-        parsed = []
-
+def parse(data):
     for _, datum in data.items():
         if isinstance(datum, dict):
-            for _ in parse(datum):
-                yield _
+            for key_content in parse(datum):
+                yield key_content
         else:
             for item in datum:
                 for key in item:
