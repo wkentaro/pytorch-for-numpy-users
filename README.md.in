@@ -14,6 +14,8 @@ git clone https://github.com/wkentaro/pytorch-for-numpy-users.git
 cd pytorch-for-numpy-users
 vim conversions.yaml
 git commit -m "Update conversions.yaml"
+
+./run_tests.py
 ```
 
 
