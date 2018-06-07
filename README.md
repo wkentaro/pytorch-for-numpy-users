@@ -61,20 +61,23 @@ git commit -m "Update conversions.yaml"
 
 <table>
 <thead>
-<tr><th>Numpy                                                                      </th><th>PyTorch                                                   </th></tr>
+<tr><th>Numpy                                                                     </th><th>PyTorch                                                   </th></tr>
 </thead>
 <tbody>
-<tr><td><code>np.array([[1, 2], [3, 4]])</code>                                    </td><td><code>torch.tensor([[1, 2], [3, 4]])</code>               </td></tr>
-<tr><td><code>np.array([3.2, 4.3], dtype=np.float16); np.float16([3.2, 4.3])</code></td><td><code>torch.tensor([3.2, 4.3], dtype=torch.float16)</code></td></tr>
-<tr><td><code>x.copy()</code>                                                      </td><td><code>x.clone()</code>                                    </td></tr>
-<tr><td><code>np.fromfile(file)</code>                                             </td><td><code>torch.tensor(torch.Storage(file))</code>            </td></tr>
-<tr><td><code>np.frombuffer</code>                                                 </td><td>                                                          </td></tr>
-<tr><td><code>np.fromfunction</code>                                               </td><td>                                                          </td></tr>
-<tr><td><code>np.fromiter</code>                                                   </td><td>                                                          </td></tr>
-<tr><td><code>np.fromstring</code>                                                 </td><td>                                                          </td></tr>
-<tr><td><code>np.load</code>                                                       </td><td><code>torch.load</code>                                   </td></tr>
-<tr><td><code>np.loadtxt</code>                                                    </td><td>                                                          </td></tr>
-<tr><td><code>np.concatenate</code>                                                </td><td><code>torch.cat</code>                                    </td></tr>
+<tr><td><code>np.array([[1, 2], [3, 4]])</code>                                   </td><td><code>torch.tensor([[1, 2], [3, 4]])</code>               </td></tr>
+<tr><td><pre>
+np.array([3.2, 4.3], dtype=np.float16)
+np.float16([3.2, 4.3])
+</pre></td><td><code>torch.tensor([3.2, 4.3], dtype=torch.float16)</code></td></tr>
+<tr><td><code>x.copy()</code>                                                     </td><td><code>x.clone()</code>                                    </td></tr>
+<tr><td><code>np.fromfile(file)</code>                                            </td><td><code>torch.tensor(torch.Storage(file))</code>            </td></tr>
+<tr><td><code>np.frombuffer</code>                                                </td><td>                                                          </td></tr>
+<tr><td><code>np.fromfunction</code>                                              </td><td>                                                          </td></tr>
+<tr><td><code>np.fromiter</code>                                                  </td><td>                                                          </td></tr>
+<tr><td><code>np.fromstring</code>                                                </td><td>                                                          </td></tr>
+<tr><td><code>np.load</code>                                                      </td><td><code>torch.load</code>                                   </td></tr>
+<tr><td><code>np.loadtxt</code>                                                   </td><td>                                                          </td></tr>
+<tr><td><code>np.concatenate</code>                                               </td><td><code>torch.cat</code>                                    </td></tr>
 </tbody>
 </table>
 
