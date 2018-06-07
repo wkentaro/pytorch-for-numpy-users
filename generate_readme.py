@@ -16,23 +16,30 @@ def get_section(title, data, h=2):
         return content
 
     headers = ['Numpy', 'PyTorch']
+    keys = ['numpy', 'pytorch']
     rows = []
     for d in data:
-        numpy = '`' + d['numpy'] + '`' if d['numpy'] is not None else ''
-        if isinstance(d['pytorch'], dict):
-            content = d['pytorch']['content']
-            is_code = d['pytorch']['is_code']
-        elif d['pytorch'] is None:
-            content = ''
-            is_code = False
-        else:
-            content = d['pytorch']
-            is_code = True
-        pytorch = '`' + content + '`' if is_code else content
-        rows.append([numpy, pytorch])
+        row = []
+        for key in keys:
+            if isinstance(d[key], dict):
+                content = d[key]['content']
+                is_code = d[key]['is_code']
+            elif d[key] is None:
+                content = ''
+                is_code = False
+            else:
+                content = d[key]
+                is_code = True
+            if is_code and content:
+                if len(content.splitlines()) > 1:
+                    content = '<pre>\n{}</pre>'.format(content)
+                else:
+                    content = '<code>{}</code>'.format(content)
+            row.append(content)
+        rows.append(row)
 
     content = '%s %s\n\n' % ('#' * h, title.capitalize())
-    content += tabulate.tabulate(rows, headers=headers, tablefmt='pipe')
+    content += tabulate.tabulate(rows, headers=headers, tablefmt='html')
     content += '\n\n'
     return content
 
