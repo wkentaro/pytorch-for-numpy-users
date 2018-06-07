@@ -6,6 +6,17 @@
 [PyTorch](https://github.com/pytorch/pytorch.git) version of [_Torch for Numpy users_](https://github.com/torch/torch7/wiki/Torch-for-Numpy-users).  
 We assume you use the latest PyTorch and Numpy.
 
+
+## How to contribute?
+
+```bash
+git clone https://github.com/wkentaro/pytorch-for-numpy-users.git
+cd pytorch-for-numpy-users
+vim conversions.yaml
+git commit -m "Update conversions.yaml"
+```
+
+
 ## Types
 
 <table>
