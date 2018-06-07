@@ -9,6 +9,7 @@ python: '3.6'
 script:
   - pip install flake8
   - flake8 .
+  - ./run_tests.py
 
 after_success:
   - ./generate_readme.py > README.md
