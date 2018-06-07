@@ -12,8 +12,11 @@ script:
   - ./run_tests.py
 
 after_success:
-  - ./generate_readme.py > README.md
-  - ./.travis_push.sh
+  - |
+    if [ "$TRAVIS_BRANCH" = "master" ]; then
+      ./generate_readme.py > README.md
+      ./.travis_push.sh
+    fi
 
 branches:
   only:
