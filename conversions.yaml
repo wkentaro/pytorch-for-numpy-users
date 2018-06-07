@@ -39,7 +39,9 @@ constructors:
   from existing data:
     - numpy: np.array([[1, 2], [3, 4]])
       pytorch: torch.tensor([[1, 2], [3, 4]])
-    - numpy: np.array([3.2, 4.3], dtype=np.float16); np.float16([3.2, 4.3])
+    - numpy: |
+        np.array([3.2, 4.3], dtype=np.float16)
+        np.float16([3.2, 4.3])
       pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
     - numpy: x.copy()
       pytorch: x.clone()
