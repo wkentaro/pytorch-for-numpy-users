@@ -9,8 +9,6 @@ python: '3.6'
 script:
   - pip install flake8
   - flake8 .
-  - ./generate_readme.py > README.md.gen
-  - diff README.md README.md.gen
 
 branches:
   only:
