@@ -151,7 +151,15 @@ We assume you use the latest PyTorch and Numpy.
 <tbody>
 <tr><td><code>np.put</code>            </td><td>                                                                        </td></tr>
 <tr><td><code>x.put</code>             </td><td><code>x.put_</code>                                                     </td></tr>
-<tr><td><code>x.repeat</code>          </td><td>                                                                        </td></tr>
+<tr><td><pre>
+x = np.array([1, 2, 3])
+x.repeat(2)  # [1, 1, 2, 2, 3, 3]
+</pre>                                </td><td><pre>
+x = torch.tensor([1, 2, 3])
+x.repeat(2)  # [1, 2, 3, 1, 2, 3]
+x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
+# [1, 1, 2, 2, 3, 3]
+</pre>                                                                         </td></tr>
 <tr><td><code>np.tile(x, (3, 2))</code></td><td><code>x.repeat(3, 2)</code>                                             </td></tr>
 <tr><td><code>np.choose</code>         </td><td>                                                                        </td></tr>
 <tr><td><code>np.sort</code>           </td><td><code>sorted, indices = torch.sort(x, [dim])</code>                     </td></tr>
