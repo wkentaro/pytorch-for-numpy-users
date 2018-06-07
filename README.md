@@ -21,18 +21,18 @@ git commit -m "Update conversions.yaml"
 
 <table>
 <thead>
-<tr><th>Numpy                  </th><th>PyTorch                                   </th></tr>
+<tr><th>Numpy                  </th><th>PyTorch                                 </th></tr>
 </thead>
 <tbody>
-<tr><td><code>np.ndarray</code></td><td><code>torch.Tensor</code>                 </td></tr>
-<tr><td><code>np.float32</code></td><td><code>torch.float32 or torch.float</code> </td></tr>
-<tr><td><code>np.float64</code></td><td><code>torch.float64 or torch.double</code></td></tr>
-<tr><td><code>np.float16</code></td><td><code>torch.float16 or torch.half</code>  </td></tr>
-<tr><td><code>np.int8</code>   </td><td><code>torch.int8</code>                   </td></tr>
-<tr><td><code>np.uint8</code>  </td><td><code>torch.uint8</code>                  </td></tr>
-<tr><td><code>np.int16</code>  </td><td><code>torch.int16 or torch.short</code>   </td></tr>
-<tr><td><code>np.int32</code>  </td><td><code>torch.int32 or torch.int</code>     </td></tr>
-<tr><td><code>np.int64</code>  </td><td><code>torch.int64 or torch.long</code>    </td></tr>
+<tr><td><code>np.ndarray</code></td><td><code>torch.Tensor</code>               </td></tr>
+<tr><td><code>np.float32</code></td><td><code>torch.float32; torch.float</code> </td></tr>
+<tr><td><code>np.float64</code></td><td><code>torch.float64; torch.double</code></td></tr>
+<tr><td><code>np.float16</code></td><td><code>torch.float16; torch.half</code>  </td></tr>
+<tr><td><code>np.int8</code>   </td><td><code>torch.int8</code>                 </td></tr>
+<tr><td><code>np.uint8</code>  </td><td><code>torch.uint8</code>                </td></tr>
+<tr><td><code>np.int16</code>  </td><td><code>torch.int16; torch.short</code>   </td></tr>
+<tr><td><code>np.int32</code>  </td><td><code>torch.int32; torch.int</code>     </td></tr>
+<tr><td><code>np.int64</code>  </td><td><code>torch.int64; torch.long</code>    </td></tr>
 </tbody>
 </table>
 
@@ -61,20 +61,20 @@ git commit -m "Update conversions.yaml"
 
 <table>
 <thead>
-<tr><th>Numpy                                                                        </th><th>PyTorch                                                   </th></tr>
+<tr><th>Numpy                                                                      </th><th>PyTorch                                                   </th></tr>
 </thead>
 <tbody>
-<tr><td><code>np.array([[1, 2], [3, 4]])</code>                                      </td><td><code>torch.tensor([[1, 2], [3, 4])</code>                </td></tr>
-<tr><td><code>np.array([3.2, 4.3], dtype=np.float16) or np.float16([3.2, 4.3])</code></td><td><code>torch.tensor([3.2, 4.3], dtype=torch.float16)</code></td></tr>
-<tr><td><code>x.copy()</code>                                                        </td><td><code>x.clone()</code>                                    </td></tr>
-<tr><td><code>np.fromfile(file)</code>                                               </td><td><code>torch.tensor(torch.Storage(file))</code>            </td></tr>
-<tr><td><code>np.frombuffer</code>                                                   </td><td>                                                          </td></tr>
-<tr><td><code>np.fromfunction</code>                                                 </td><td>                                                          </td></tr>
-<tr><td><code>np.fromiter</code>                                                     </td><td>                                                          </td></tr>
-<tr><td><code>np.fromstring</code>                                                   </td><td>                                                          </td></tr>
-<tr><td><code>np.load</code>                                                         </td><td><code>torch.load</code>                                   </td></tr>
-<tr><td><code>np.loadtxt</code>                                                      </td><td>                                                          </td></tr>
-<tr><td><code>np.concatenate</code>                                                  </td><td><code>torch.cat</code>                                    </td></tr>
+<tr><td><code>np.array([[1, 2], [3, 4]])</code>                                    </td><td><code>torch.tensor([[1, 2], [3, 4]])</code>               </td></tr>
+<tr><td><code>np.array([3.2, 4.3], dtype=np.float16); np.float16([3.2, 4.3])</code></td><td><code>torch.tensor([3.2, 4.3], dtype=torch.float16)</code></td></tr>
+<tr><td><code>x.copy()</code>                                                      </td><td><code>x.clone()</code>                                    </td></tr>
+<tr><td><code>np.fromfile(file)</code>                                             </td><td><code>torch.tensor(torch.Storage(file))</code>            </td></tr>
+<tr><td><code>np.frombuffer</code>                                                 </td><td>                                                          </td></tr>
+<tr><td><code>np.fromfunction</code>                                               </td><td>                                                          </td></tr>
+<tr><td><code>np.fromiter</code>                                                   </td><td>                                                          </td></tr>
+<tr><td><code>np.fromstring</code>                                                 </td><td>                                                          </td></tr>
+<tr><td><code>np.load</code>                                                       </td><td><code>torch.load</code>                                   </td></tr>
+<tr><td><code>np.loadtxt</code>                                                    </td><td>                                                          </td></tr>
+<tr><td><code>np.concatenate</code>                                                </td><td><code>torch.cat</code>                                    </td></tr>
 </tbody>
 </table>
 
@@ -140,16 +140,16 @@ git commit -m "Update conversions.yaml"
 
 <table>
 <thead>
-<tr><th>Numpy                                                </th><th>PyTorch                              </th></tr>
+<tr><th>Numpy                                              </th><th>PyTorch                              </th></tr>
 </thead>
 <tbody>
-<tr><td><code>x.reshape</code>                               </td><td><code>x.reshape or x.view</code>     </td></tr>
-<tr><td><code>x.resize()</code>                              </td><td><code>x.resize_</code>               </td></tr>
-<tr><td>                                                     </td><td><code>x.resize_as_</code>            </td></tr>
-<tr><td><code>x.transpose</code>                             </td><td><code>x.transpose or x.permute</code></td></tr>
-<tr><td><code>x.flatten</code>                               </td><td><code>x.view(-1)</code>              </td></tr>
-<tr><td><code>x.squeeze()</code>                             </td><td><code>x.squeeze()</code>             </td></tr>
-<tr><td><code>x[:, np.newaxis] or np.expand_dims(x, 1)</code></td><td><code>x.unsqueeze(1)</code>          </td></tr>
+<tr><td><code>x.reshape</code>                             </td><td><code>x.reshape; x.view</code>       </td></tr>
+<tr><td><code>x.resize()</code>                            </td><td><code>x.resize_</code>               </td></tr>
+<tr><td>                                                   </td><td><code>x.resize_as_</code>            </td></tr>
+<tr><td><code>x.transpose</code>                           </td><td><code>x.transpose or x.permute</code></td></tr>
+<tr><td><code>x.flatten</code>                             </td><td><code>x.view(-1)</code>              </td></tr>
+<tr><td><code>x.squeeze()</code>                           </td><td><code>x.squeeze()</code>             </td></tr>
+<tr><td><code>x[:, np.newaxis]; np.expand_dims(x, 1)</code></td><td><code>x.unsqueeze(1)</code>          </td></tr>
 </tbody>
 </table>
 
@@ -194,8 +194,8 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 <tr><td><code>x.argmax</code>   </td><td><code>x.argmax</code>                      </td></tr>
 <tr><td><code>x.clip</code>     </td><td><code>x.clamp</code>                       </td></tr>
 <tr><td><code>x.round</code>    </td><td><code>x.round</code>                       </td></tr>
-<tr><td><code>np.floor(x)</code></td><td><code>torch.floor(x) or x.floor()</code>   </td></tr>
-<tr><td><code>np.ceil(x)</code> </td><td><code>torch.ceil() or x.ceil()</code>      </td></tr>
+<tr><td><code>np.floor(x)</code></td><td><code>torch.floor(x); x.floor()</code>     </td></tr>
+<tr><td><code>np.ceil(x)</code> </td><td><code>torch.ceil(x); x.ceil()</code>       </td></tr>
 <tr><td><code>x.trace</code>    </td><td><code>x.trace</code>                       </td></tr>
 <tr><td><code>x.sum</code>      </td><td><code>x.sum</code>                         </td></tr>
 <tr><td><code>x.cumsum</code>   </td><td><code>x.cumsum</code>                      </td></tr>
