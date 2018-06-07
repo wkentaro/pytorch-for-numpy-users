@@ -10,6 +10,10 @@ script:
   - pip install flake8
   - flake8 .
 
+after_success:
+  - ./generate_readme.py > README.md
+  - .travis_push.sh
+
 branches:
   only:
     - master
