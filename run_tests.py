@@ -46,26 +46,28 @@ def main():
 import numpy as np
 
 
-def test_%04d():
+def test_{key}_{id:04d}():
     x = np.array([[1, 2, 3], [4, 5, 6]])
-%s
+{content}
 '''
         elif key == 'pytorch':
             code = '''\
 import torch
 
 
-def test_%04d():
+def test_{key}_{id:04d}():
     x = torch.tensor([[1, 2, 3], [4, 5, 6]])
-%s
+{content}
 '''
         else:
             raise ValueError
 
         content = '\n'.join(' ' * 4 + l for l in content.splitlines())
-        code = code % (i, content)
+        code = code.format(key=key, id=i, content=content)
 
-        test_file = osp.join(here, 'tests/test_%04d.py' % i)
+        test_file = osp.join(
+            here, 'tests/test_{key}_{id:04d}.py'.format(key=key, id=i)
+        )
         with open(test_file, 'w') as f:
             f.write(code)
 
