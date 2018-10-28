@@ -158,9 +158,7 @@ constructors:
     - numpy: np.where
       pytorch: torch.where
     - numpy: x[::-1]
-      pytorch:
-        content: '<a href="https://github.com/pytorch/pytorch/issues/229">a workaround</a>'
-        is_code: false
+      pytorch: torch.flip(x, [0])
   calculation:
     - numpy: x.min
       pytorch: x.min
