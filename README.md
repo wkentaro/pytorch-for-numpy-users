@@ -182,7 +182,7 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 <tr><td><code>np.argsort</code>                                               </td><td><code>sorted, indices = torch.sort(x, [dim])</code>                                                                                                   </td></tr>
 <tr><td><code>np.nonzero</code>                                               </td><td><code>torch.nonzero</code>                                                                                                                            </td></tr>
 <tr><td><code>np.where</code>                                                 </td><td><code>torch.where</code>                                                                                                                              </td></tr>
-<tr><td><code>x[::-1]</code>                                                  </td><td><a href="https://github.com/pytorch/pytorch/issues/229">a workaround</a>                                                                              </td></tr>
+<tr><td><code>x[::-1]</code>                                                  </td><td><code>torch.flip(x, [0])</code>                                                                                                                       </td></tr>
 </tbody>
 </table>
 
