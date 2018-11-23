@@ -229,5 +229,16 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 </tbody>
 </table>
 
+### Random numbers
+
+<table>
+<thead>
+<tr><th>Numpy                      </th><th>PyTorch                       </th></tr>
+</thead>
+<tbody>
+<tr><td><code>np.random.seed</code></td><td><code>torch.manual_seed</code></td></tr>
+</tbody>
+</table>
+
 
 

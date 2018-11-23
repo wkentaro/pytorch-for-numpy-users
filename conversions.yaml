@@ -211,3 +211,6 @@ constructors:
       pytorch: x.eq
     - numpy: np.not_equal
       pytorch: x.ne
+  random numbers:
+    - numpy: np.random.seed
+      pytorch: torch.manual_seed
