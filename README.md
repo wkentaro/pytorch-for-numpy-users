@@ -97,6 +97,17 @@ np.float16([3.2, 4.3])
 </tbody>
 </table>
 
+### Linear algebra
+
+<table>
+<thead>
+<tr><th>Numpy              </th><th>PyTorch              </th></tr>
+</thead>
+<tbody>
+<tr><td><code>np.dot</code></td><td><code>torch.mm</code></td></tr>
+</tbody>
+</table>
+
 ### Building matrices
 
 <table>
@@ -190,26 +201,27 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 
 <table>
 <thead>
-<tr><th>Numpy                   </th><th>PyTorch                                    </th></tr>
+<tr><th>Numpy                     </th><th>PyTorch                                    </th></tr>
 </thead>
 <tbody>
-<tr><td><code>x.min</code>      </td><td><code>x.min</code>                         </td></tr>
-<tr><td><code>x.argmin</code>   </td><td><code>x.argmin</code>                      </td></tr>
-<tr><td><code>x.max</code>      </td><td><code>x.max</code>                         </td></tr>
-<tr><td><code>x.argmax</code>   </td><td><code>x.argmax</code>                      </td></tr>
-<tr><td><code>x.clip</code>     </td><td><code>x.clamp</code>                       </td></tr>
-<tr><td><code>x.round</code>    </td><td><code>x.round</code>                       </td></tr>
-<tr><td><code>np.floor(x)</code></td><td><code>torch.floor(x); x.floor()</code>     </td></tr>
-<tr><td><code>np.ceil(x)</code> </td><td><code>torch.ceil(x); x.ceil()</code>       </td></tr>
-<tr><td><code>x.trace</code>    </td><td><code>x.trace</code>                       </td></tr>
-<tr><td><code>x.sum</code>      </td><td><code>x.sum</code>                         </td></tr>
-<tr><td><code>x.cumsum</code>   </td><td><code>x.cumsum</code>                      </td></tr>
-<tr><td><code>x.mean</code>     </td><td><code>x.mean</code>                        </td></tr>
-<tr><td><code>x.std</code>      </td><td><code>x.std</code>                         </td></tr>
-<tr><td><code>x.prod</code>     </td><td><code>x.prod</code>                        </td></tr>
-<tr><td><code>x.cumprod</code>  </td><td><code>x.cumprod</code>                     </td></tr>
-<tr><td><code>x.all</code>      </td><td><code>(x == 1).sum() == x.nelement()</code></td></tr>
-<tr><td><code>x.any</code>      </td><td><code>(x == 1).sum() > 0</code>            </td></tr>
+<tr><td><code>x.min</code>        </td><td><code>x.min</code>                         </td></tr>
+<tr><td><code>x.argmin</code>     </td><td><code>x.argmin</code>                      </td></tr>
+<tr><td><code>x.max</code>        </td><td><code>x.max</code>                         </td></tr>
+<tr><td><code>x.argmax</code>     </td><td><code>x.argmax</code>                      </td></tr>
+<tr><td><code>x.clip</code>       </td><td><code>x.clamp</code>                       </td></tr>
+<tr><td><code>x.round</code>      </td><td><code>x.round</code>                       </td></tr>
+<tr><td><code>np.floor(x)</code>  </td><td><code>torch.floor(x); x.floor()</code>     </td></tr>
+<tr><td><code>np.ceil(x)</code>   </td><td><code>torch.ceil(x); x.ceil()</code>       </td></tr>
+<tr><td><code>x.trace</code>      </td><td><code>x.trace</code>                       </td></tr>
+<tr><td><code>x.sum</code>        </td><td><code>x.sum</code>                         </td></tr>
+<tr><td><code>x.sum(axis=0)</code></td><td><code>x.sum(0)</code>                      </td></tr>
+<tr><td><code>x.cumsum</code>     </td><td><code>x.cumsum</code>                      </td></tr>
+<tr><td><code>x.mean</code>       </td><td><code>x.mean</code>                        </td></tr>
+<tr><td><code>x.std</code>        </td><td><code>x.std</code>                         </td></tr>
+<tr><td><code>x.prod</code>       </td><td><code>x.prod</code>                        </td></tr>
+<tr><td><code>x.cumprod</code>    </td><td><code>x.cumprod</code>                     </td></tr>
+<tr><td><code>x.all</code>        </td><td><code>(x == 1).sum() == x.nelement()</code></td></tr>
+<tr><td><code>x.any</code>        </td><td><code>(x == 1).sum() > 0</code>            </td></tr>
 </tbody>
 </table>
 
@@ -233,10 +245,23 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 
 <table>
 <thead>
-<tr><th>Numpy                      </th><th>PyTorch                       </th></tr>
+<tr><th>Numpy                                </th><th>PyTorch                       </th></tr>
 </thead>
 <tbody>
-<tr><td><code>np.random.seed</code></td><td><code>torch.manual_seed</code></td></tr>
+<tr><td><code>np.random.seed</code>          </td><td><code>torch.manual_seed</code></td></tr>
+<tr><td><code>np.random.permutation(5)</code></td><td><code>torch.randperm(5)</code></td></tr>
+</tbody>
+</table>
+
+### Numerical operations
+
+<table>
+<thead>
+<tr><th>Numpy               </th><th>PyTorch                </th></tr>
+</thead>
+<tbody>
+<tr><td><code>np.sign</code></td><td><code>torch.sign</code></td></tr>
+<tr><td><code>np.sqrt</code></td><td><code>torch.sqrt</code></td></tr>
 </tbody>
 </table>
 

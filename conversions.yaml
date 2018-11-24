@@ -74,6 +74,9 @@ constructors:
       pytorch: torch.linspace
     - numpy: np.logspace
       pytorch: torch.logspace
+  linear algebra:
+    - numpy: np.dot
+      pytorch: torch.mm
   building matrices:
     - numpy: np.diag
       pytorch: torch.diag
@@ -184,6 +187,8 @@ constructors:
       pytorch: x.trace
     - numpy: x.sum
       pytorch: x.sum
+    - numpy: x.sum(axis=0)
+      pytorch: x.sum(0)
     - numpy: x.cumsum
       pytorch: x.cumsum
     - numpy: x.mean
@@ -214,3 +219,10 @@ constructors:
   random numbers:
     - numpy: np.random.seed
       pytorch: torch.manual_seed
+    - numpy: np.random.permutation(5)
+      pytorch: torch.randperm(5)
+  numerical operations:
+    - numpy: np.sign
+      pytorch: torch.sign
+    - numpy: np.sqrt
+      pytorch: torch.sqrt
