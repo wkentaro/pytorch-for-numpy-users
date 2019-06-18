@@ -162,6 +162,8 @@ constructors:
       pytorch: torch.where
     - numpy: x[::-1]
       pytorch: torch.flip(x, [0])
+    - numpy: np.unique(x)
+      pytorch: torch.unique(x)
   calculation:
     - numpy: x.min
       pytorch: x.min
