@@ -194,6 +194,7 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 <tr><td><code>np.nonzero</code>                                               </td><td><code>torch.nonzero</code>                                                                                                                            </td></tr>
 <tr><td><code>np.where</code>                                                 </td><td><code>torch.where</code>                                                                                                                              </td></tr>
 <tr><td><code>x[::-1]</code>                                                  </td><td><code>torch.flip(x, [0])</code>                                                                                                                       </td></tr>
+<tr><td><code>np.unique(x)</code>                                             </td><td><code>torch.unique(x)</code>                                                                                                                          </td></tr>
 </tbody>
 </table>
 
