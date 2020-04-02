@@ -1,2 +1,3 @@
 [flake8]
-exclude = tests/
+exclude = .anaconda3/, tests/
+ignore =
