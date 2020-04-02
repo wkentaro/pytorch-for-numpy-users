@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <style>
+    @font-face {
+      font-family: 'Product Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: #555555;
+    }
+
+    body {
+      font-family: "Product Sans", Helvetica, sans-serif;;
+      color: #787878;
+      /* background-color: #e5e6e1; */
+    }
+
+    a {
+      -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      border-bottom: dotted 1px;
+      color: #49bf9d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #49bf9d !important;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <h1>PyTorch for Numpy Users.</h1>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="A cheatsheet for Numpy users to use PyTorch. #machinelearning #pytorch https://pytorch-for-numpy-users.wkentaro.com" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <iframe src="https://ghbtns.com/github-btn.html?user=wkentaro&repo=pytorch-for-numpy-users&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      <p>
+        A cheatsheet for Numpy users to use PyTorch. To add/edit an entry, see it on
+        <a href="https://github.com/wkentaro/pytorch-for-numpy-users" target="_blank">GitHub</a>.
+      </p>
+
+      <div class='row'>
+<div class='col-md-6'>
+<h2>Types</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.ndarray</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.Tensor</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.float32</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.float32; torch.float</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.float64</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.float64; torch.double</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.float16</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.float16; torch.half</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.int8</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.int8</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.uint8</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.uint8</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.int16</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.int16; torch.short</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.int32</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.int32; torch.int</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.int64</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.int64; torch.long</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Ones and zeros</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.empty((2, 3))</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.empty(2, 3)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.empty_like(x)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.empty_like(x)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.eye</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.eye</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.identity</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.eye</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.ones</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.ones</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.ones_like</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.ones_like</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.zeros</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.zeros</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.zeros_like</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.zeros_like</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>From existing data</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.array([[1, 2], [3, 4]])</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.tensor([[1, 2], [3, 4]])</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.array([3.2, 4.3], dtype=np.float16)
+np.float16([3.2, 4.3])
+</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.tensor([3.2, 4.3], dtype=torch.float16)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.copy()</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.clone()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.fromfile(file)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.tensor(torch.Storage(file))</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.frombuffer</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.fromfunction</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.fromiter</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.fromstring</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.load</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.load</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.loadtxt</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.concatenate</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.cat</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Numerical ranges</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.arange(10)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.arange(10)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.arange(2, 3, 0.1)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.arange(2, 3, 0.1)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.linspace</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.linspace</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.logspace</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.logspace</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Linear algebra</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.dot</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.mm</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Building matrices</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.diag</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.diag</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.tril</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.tril</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.triu</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.triu</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Attributes</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.shape</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.shape</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.strides</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.stride()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.ndim</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.dim()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.data</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.data</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.size</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.nelement()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.dtype</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.dtype</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Indexing</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[0]</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x[0]</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[:, 0]</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x[:, 0]</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[indices]</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x[indices]</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.take(x, indices)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.take(x, torch.LongTensor(indices))</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[x != 0]</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x[x != 0]</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Shape manipulation</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.reshape</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.reshape; x.view</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.resize()</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.resize_</pre>          </td></tr>
+<tr><td style='width: 50%'>       </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.resize_as_</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.transpose</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.transpose or x.permute</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.flatten</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.view(-1)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.squeeze()</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.squeeze()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[:, np.newaxis]; np.expand_dims(x, 1)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.unsqueeze(1)</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Item selection and manipulation</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.put</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.put</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.put_</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x = np.array([1, 2, 3])
+x.repeat(2)  # [1, 1, 2, 2, 3, 3]
+</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x = torch.tensor([1, 2, 3])
+x.repeat(2)  # [1, 2, 3, 1, 2, 3]
+x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
+# [1, 1, 2, 2, 3, 3]
+</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.tile(x, (3, 2))</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.repeat(3, 2)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.choose</pre>        </td><td style='width: 50%'>         </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.sort</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+sorted, indices = torch.sort(x, [dim])</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.argsort</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+sorted, indices = torch.sort(x, [dim])</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.nonzero</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.nonzero</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.where</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.where</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x[::-1]</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.flip(x, [0])</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.unique(x)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.unique(x)</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Calculation</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.min</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.min</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.argmin</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.argmin</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.max</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.max</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.argmax</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.argmax</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.clip</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.clamp</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.round</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.round</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.floor(x)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.floor(x); x.floor()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.ceil(x)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.ceil(x); x.ceil()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.trace</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.trace</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.sum</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.sum</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.sum(axis=0)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.sum(0)</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.cumsum</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.cumsum</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.mean</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.mean</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.std</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.std</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.prod</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.prod</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.cumprod</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.cumprod</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.all</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+(x == 1).sum() == x.nelement()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+x.any</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+(x == 1).sum() > 0</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Arithmetic and comparison operations</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.less</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.lt</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.less_equal</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.le</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.greater</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.gt</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.greater_equal</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.ge</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.equal</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.eq</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.not_equal</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+x.ne</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Random numbers</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.random.seed</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.manual_seed</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.random.permutation(5)</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.randperm(5)</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+<div class='col-md-6'>
+<h2>Numerical operations</h2>
+<div class='table-responsive'><table class='table table-bordered table-hover'>
+<thead>
+<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+</thead>
+<tbody>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.sign</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.sign</pre>          </td></tr>
+<tr><td style='width: 50%'><pre class='pre-scrollable'>
+np.sqrt</pre>        </td><td style='width: 50%'><pre class='pre-scrollable'>
+torch.sqrt</pre>          </td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+    </div>
+  </body>
+</html>
+
