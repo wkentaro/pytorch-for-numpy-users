@@ -35,11 +35,12 @@ jobs:
     - name: Update README.md
       run: |
         if [ "$GITHUB_EVENT_NAME" = "push" -a "${GITHUB_REF:11}" = "master" ]; then
-          ./generate_readme.py > README.md
+          ./generate_readme_md.py > README.md
+          ./generate_index_html.py > index.html
 
           git config --global user.email "www.kentaro.wada@gmail.com"
           git config --global user.name "Kentaro Wada"
-          git add README.md
-          git diff-index --cached --quiet HEAD || git commit -m "Update README.md"
+          git add README.md index.html
+          git diff-index --cached --quiet HEAD || git commit -m "Update README.md and index.html"
           git push origin master
         fi

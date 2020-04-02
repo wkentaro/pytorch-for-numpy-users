@@ -18,213 +18,212 @@ types:
   - numpy: np.int64
     pytorch: torch.int64; torch.long
 
-constructors:
-  ones and zeros:
-    - numpy: np.empty((2, 3))
-      pytorch: torch.empty(2, 3)
-    - numpy: np.empty_like(x)
-      pytorch: torch.empty_like(x)
-    - numpy: np.eye
-      pytorch: torch.eye
-    - numpy: np.identity
-      pytorch: torch.eye
-    - numpy: np.ones
-      pytorch: torch.ones
-    - numpy: np.ones_like
-      pytorch: torch.ones_like
-    - numpy: np.zeros
-      pytorch: torch.zeros
-    - numpy: np.zeros_like
-      pytorch: torch.zeros_like
-  from existing data:
-    - numpy: np.array([[1, 2], [3, 4]])
-      pytorch: torch.tensor([[1, 2], [3, 4]])
-    - numpy: |
-        np.array([3.2, 4.3], dtype=np.float16)
-        np.float16([3.2, 4.3])
-      pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
-    - numpy: x.copy()
-      pytorch: x.clone()
-    - numpy:
-        content: np.fromfile(file)
-        skip_test: true
-      pytorch:
-        content: torch.tensor(torch.Storage(file))
-        skip_test: true
-    - numpy: np.frombuffer
-      pytorch:
-    - numpy: np.fromfunction
-      pytorch:
-    - numpy: np.fromiter
-      pytorch:
-    - numpy: np.fromstring
-      pytorch:
-    - numpy: np.load
-      pytorch: torch.load
-    - numpy: np.loadtxt
-      pytorch:
-    - numpy: np.concatenate
-      pytorch: torch.cat
-  numerical ranges:
-    - numpy: np.arange(10)
-      pytorch: torch.arange(10)
-    - numpy: np.arange(2, 3, 0.1)
-      pytorch: torch.arange(2, 3, 0.1)
-    - numpy: np.linspace
-      pytorch: torch.linspace
-    - numpy: np.logspace
-      pytorch: torch.logspace
-  linear algebra:
-    - numpy: np.dot
-      pytorch: torch.mm
-  building matrices:
-    - numpy: np.diag
-      pytorch: torch.diag
-    - numpy: np.tril
-      pytorch: torch.tril
-    - numpy: np.triu
-      pytorch: torch.triu
-  attributes:
-    - numpy: x.shape
-      pytorch: x.shape
-    - numpy: x.strides
-      pytorch: x.stride()
-    - numpy: x.ndim
-      pytorch: x.dim()
-    - numpy: x.data
-      pytorch: x.data
-    - numpy: x.size
-      pytorch: x.nelement()
-    - numpy: x.dtype
-      pytorch: x.dtype
-  indexing:
-    - numpy: x[0]
-      pytorch: x[0]
-    - numpy: x[:, 0]
-      pytorch: x[:, 0]
-    - numpy:
-        content: x[indices]
-        skip_test: true
-      pytorch:
-        content: x[indices]
-        skip_test: true
-    - numpy:
-        content: np.take(x, indices)
-        skip_test: true
-      pytorch:
-        content: torch.take(x, torch.LongTensor(indices))
-        skip_test: true
-    - numpy: x[x != 0]
-      pytorch: x[x != 0]
-  shape manipulation:
-    - numpy: x.reshape
-      pytorch: x.reshape; x.view
-    - numpy: x.resize()
-      pytorch: x.resize_
-    - numpy:
-      pytorch: x.resize_as_
-    - numpy: x.transpose
-      pytorch: x.transpose or x.permute
-    - numpy: x.flatten
-      pytorch: x.view(-1)
-    - numpy: x.squeeze()
-      pytorch: x.squeeze()
-    - numpy: x[:, np.newaxis]; np.expand_dims(x, 1)
-      pytorch: x.unsqueeze(1)
-  item selection and manipulation:
-    - numpy: np.put
-      pytorch:
-    - numpy: x.put
-      pytorch: x.put_
-    - numpy: |
-        x = np.array([1, 2, 3])
-        x.repeat(2)  # [1, 1, 2, 2, 3, 3]
-      pytorch: |
-        x = torch.tensor([1, 2, 3])
-        x.repeat(2)  # [1, 2, 3, 1, 2, 3]
-        x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
-        # [1, 1, 2, 2, 3, 3]
-    - numpy: np.tile(x, (3, 2))
-      pytorch: x.repeat(3, 2)
-    - numpy: np.choose
-      pytorch:
-    - numpy: np.sort
-      pytorch:
-        content: sorted, indices = torch.sort(x, [dim])
-        skip_test: true
-    - numpy: np.argsort
-      pytorch:
-        content: sorted, indices = torch.sort(x, [dim])
-        skip_test: true
-    - numpy: np.nonzero
-      pytorch: torch.nonzero
-    - numpy: np.where
-      pytorch: torch.where
-    - numpy: x[::-1]
-      pytorch: torch.flip(x, [0])
-    - numpy: np.unique(x)
-      pytorch: torch.unique(x)
-  calculation:
-    - numpy: x.min
-      pytorch: x.min
-    - numpy: x.argmin
-      pytorch: x.argmin
-    - numpy: x.max
-      pytorch: x.max
-    - numpy: x.argmax
-      pytorch: x.argmax
-    - numpy: x.clip
-      pytorch: x.clamp
-    - numpy: x.round
-      pytorch: x.round
-    - numpy: np.floor(x)
-      pytorch:
-        content: torch.floor(x); x.floor()
-        skip_test: true
-    - numpy: np.ceil(x)
-      pytorch:
-        content: torch.ceil(x); x.ceil()
-        skip_test: true
-    - numpy: x.trace
-      pytorch: x.trace
-    - numpy: x.sum
-      pytorch: x.sum
-    - numpy: x.sum(axis=0)
-      pytorch: x.sum(0)
-    - numpy: x.cumsum
-      pytorch: x.cumsum
-    - numpy: x.mean
-      pytorch: x.mean
-    - numpy: x.std
-      pytorch: x.std
-    - numpy: x.prod
-      pytorch: x.prod
-    - numpy: x.cumprod
-      pytorch: x.cumprod
-    - numpy: x.all
-      pytorch: (x == 1).sum() == x.nelement()
-    - numpy: x.any
-      pytorch: (x == 1).sum() > 0
-  arithmetic and comparison operations:
-    - numpy: np.less
-      pytorch: x.lt
-    - numpy: np.less_equal
-      pytorch: x.le
-    - numpy: np.greater
-      pytorch: x.gt
-    - numpy: np.greater_equal
-      pytorch: x.ge
-    - numpy: np.equal
-      pytorch: x.eq
-    - numpy: np.not_equal
-      pytorch: x.ne
-  random numbers:
-    - numpy: np.random.seed
-      pytorch: torch.manual_seed
-    - numpy: np.random.permutation(5)
-      pytorch: torch.randperm(5)
-  numerical operations:
-    - numpy: np.sign
-      pytorch: torch.sign
-    - numpy: np.sqrt
-      pytorch: torch.sqrt
+ones and zeros:
+  - numpy: np.empty((2, 3))
+    pytorch: torch.empty(2, 3)
+  - numpy: np.empty_like(x)
+    pytorch: torch.empty_like(x)
+  - numpy: np.eye
+    pytorch: torch.eye
+  - numpy: np.identity
+    pytorch: torch.eye
+  - numpy: np.ones
+    pytorch: torch.ones
+  - numpy: np.ones_like
+    pytorch: torch.ones_like
+  - numpy: np.zeros
+    pytorch: torch.zeros
+  - numpy: np.zeros_like
+    pytorch: torch.zeros_like
+from existing data:
+  - numpy: np.array([[1, 2], [3, 4]])
+    pytorch: torch.tensor([[1, 2], [3, 4]])
+  - numpy: |
+      np.array([3.2, 4.3], dtype=np.float16)
+      np.float16([3.2, 4.3])
+    pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
+  - numpy: x.copy()
+    pytorch: x.clone()
+  - numpy:
+      content: np.fromfile(file)
+      skip_test: true
+    pytorch:
+      content: torch.tensor(torch.Storage(file))
+      skip_test: true
+  - numpy: np.frombuffer
+    pytorch:
+  - numpy: np.fromfunction
+    pytorch:
+  - numpy: np.fromiter
+    pytorch:
+  - numpy: np.fromstring
+    pytorch:
+  - numpy: np.load
+    pytorch: torch.load
+  - numpy: np.loadtxt
+    pytorch:
+  - numpy: np.concatenate
+    pytorch: torch.cat
+numerical ranges:
+  - numpy: np.arange(10)
+    pytorch: torch.arange(10)
+  - numpy: np.arange(2, 3, 0.1)
+    pytorch: torch.arange(2, 3, 0.1)
+  - numpy: np.linspace
+    pytorch: torch.linspace
+  - numpy: np.logspace
+    pytorch: torch.logspace
+linear algebra:
+  - numpy: np.dot
+    pytorch: torch.mm
+building matrices:
+  - numpy: np.diag
+    pytorch: torch.diag
+  - numpy: np.tril
+    pytorch: torch.tril
+  - numpy: np.triu
+    pytorch: torch.triu
+attributes:
+  - numpy: x.shape
+    pytorch: x.shape
+  - numpy: x.strides
+    pytorch: x.stride()
+  - numpy: x.ndim
+    pytorch: x.dim()
+  - numpy: x.data
+    pytorch: x.data
+  - numpy: x.size
+    pytorch: x.nelement()
+  - numpy: x.dtype
+    pytorch: x.dtype
+indexing:
+  - numpy: x[0]
+    pytorch: x[0]
+  - numpy: x[:, 0]
+    pytorch: x[:, 0]
+  - numpy:
+      content: x[indices]
+      skip_test: true
+    pytorch:
+      content: x[indices]
+      skip_test: true
+  - numpy:
+      content: np.take(x, indices)
+      skip_test: true
+    pytorch:
+      content: torch.take(x, torch.LongTensor(indices))
+      skip_test: true
+  - numpy: x[x != 0]
+    pytorch: x[x != 0]
+shape manipulation:
+  - numpy: x.reshape
+    pytorch: x.reshape; x.view
+  - numpy: x.resize()
+    pytorch: x.resize_
+  - numpy:
+    pytorch: x.resize_as_
+  - numpy: x.transpose
+    pytorch: x.transpose or x.permute
+  - numpy: x.flatten
+    pytorch: x.view(-1)
+  - numpy: x.squeeze()
+    pytorch: x.squeeze()
+  - numpy: x[:, np.newaxis]; np.expand_dims(x, 1)
+    pytorch: x.unsqueeze(1)
+item selection and manipulation:
+  - numpy: np.put
+    pytorch:
+  - numpy: x.put
+    pytorch: x.put_
+  - numpy: |
+      x = np.array([1, 2, 3])
+      x.repeat(2)  # [1, 1, 2, 2, 3, 3]
+    pytorch: |
+      x = torch.tensor([1, 2, 3])
+      x.repeat(2)  # [1, 2, 3, 1, 2, 3]
+      x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
+      # [1, 1, 2, 2, 3, 3]
+  - numpy: np.tile(x, (3, 2))
+    pytorch: x.repeat(3, 2)
+  - numpy: np.choose
+    pytorch:
+  - numpy: np.sort
+    pytorch:
+      content: sorted, indices = torch.sort(x, [dim])
+      skip_test: true
+  - numpy: np.argsort
+    pytorch:
+      content: sorted, indices = torch.sort(x, [dim])
+      skip_test: true
+  - numpy: np.nonzero
+    pytorch: torch.nonzero
+  - numpy: np.where
+    pytorch: torch.where
+  - numpy: x[::-1]
+    pytorch: torch.flip(x, [0])
+  - numpy: np.unique(x)
+    pytorch: torch.unique(x)
+calculation:
+  - numpy: x.min
+    pytorch: x.min
+  - numpy: x.argmin
+    pytorch: x.argmin
+  - numpy: x.max
+    pytorch: x.max
+  - numpy: x.argmax
+    pytorch: x.argmax
+  - numpy: x.clip
+    pytorch: x.clamp
+  - numpy: x.round
+    pytorch: x.round
+  - numpy: np.floor(x)
+    pytorch:
+      content: torch.floor(x); x.floor()
+      skip_test: true
+  - numpy: np.ceil(x)
+    pytorch:
+      content: torch.ceil(x); x.ceil()
+      skip_test: true
+  - numpy: x.trace
+    pytorch: x.trace
+  - numpy: x.sum
+    pytorch: x.sum
+  - numpy: x.sum(axis=0)
+    pytorch: x.sum(0)
+  - numpy: x.cumsum
+    pytorch: x.cumsum
+  - numpy: x.mean
+    pytorch: x.mean
+  - numpy: x.std
+    pytorch: x.std
+  - numpy: x.prod
+    pytorch: x.prod
+  - numpy: x.cumprod
+    pytorch: x.cumprod
+  - numpy: x.all
+    pytorch: (x == 1).sum() == x.nelement()
+  - numpy: x.any
+    pytorch: (x == 1).sum() > 0
+arithmetic and comparison operations:
+  - numpy: np.less
+    pytorch: x.lt
+  - numpy: np.less_equal
+    pytorch: x.le
+  - numpy: np.greater
+    pytorch: x.gt
+  - numpy: np.greater_equal
+    pytorch: x.ge
+  - numpy: np.equal
+    pytorch: x.eq
+  - numpy: np.not_equal
+    pytorch: x.ne
+random numbers:
+  - numpy: np.random.seed
+    pytorch: torch.manual_seed
+  - numpy: np.random.permutation(5)
+    pytorch: torch.randperm(5)
+numerical operations:
+  - numpy: np.sign
+    pytorch: torch.sign
+  - numpy: np.sqrt
+    pytorch: torch.sqrt

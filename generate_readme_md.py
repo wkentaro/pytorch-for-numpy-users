@@ -10,7 +10,7 @@ import yaml
 
 def get_section(title, data, h=2):
     if not isinstance(data, list):
-        content = "%s %s\n\n" % ("#" * h, title.capitalize())
+        content = "<h{0:d}>{1:s}</h{0:d}>\n\n".format(h, title.capitalize())
         for sub_title, sub_data in data.items():
             content += get_section(sub_title, sub_data, h=h + 1)
         return content
@@ -31,17 +31,16 @@ def get_section(title, data, h=2):
                 content = d[key]
                 is_code = True
             if is_code and content:
-                if len(content.splitlines()) > 1:
-                    content = "<pre>\n{}</pre>".format(content)
-                else:
-                    content = "<code>{}</code>".format(content)
+                content = "<pre class='pre-scrollable'>\n{:s}</pre>".format(
+                    content
+                )
             row.append(content)
         rows.append(row)
 
-    content = "%s %s\n\n" % ("#" * h, title.capitalize())
-    content += tabulate.tabulate(rows, headers=headers, tablefmt="html")
-    content += "\n\n"
-    return content
+    contents = []
+    contents.append("<h{0:d}>{1:s}</h{0:d}>".format(h, title.capitalize()))
+    contents.append(tabulate.tabulate(rows, headers=headers, tablefmt="html"))
+    return "\n".join(contents)
 
 
 def get_contents():
@@ -70,7 +69,7 @@ def main():
     with open(osp.join(here, "README.md.in")) as f:
         template = f.read()
     template = string.Template(template)
-    readme = template.substitute(contents=get_contents())
+    readme = template.substitute(CONTENTS=get_contents())
     print(readme)
 
 

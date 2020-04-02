@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <style>
+    @font-face {
+      font-family: 'Product Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: #555555;
+    }
+
+    body {
+      font-family: "Product Sans", Helvetica, sans-serif;;
+      color: #787878;
+      /* background-color: #e5e6e1; */
+    }
+
+    a {
+      -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      border-bottom: dotted 1px;
+      color: #49bf9d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #49bf9d !important;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <h1>PyTorch for Numpy Users.</h1>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="A cheatsheet for Numpy users to use PyTorch. #machinelearning #pytorch https://pytorch-for-numpy-users.wkentaro.com" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <iframe src="https://ghbtns.com/github-btn.html?user=wkentaro&repo=pytorch-for-numpy-users&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      <p>
+        A cheatsheet for Numpy users to use PyTorch. To add/edit an entry, see it on
+        <a href="https://github.com/wkentaro/pytorch-for-numpy-users" target="_blank">GitHub</a>.
+      </p>
+
+      $CONTENTS
+    </div>
+  </body>
+</html>
