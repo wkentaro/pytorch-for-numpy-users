@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install requirements
+      run: |
+        pip install -r requirements.txt
+    - name: Lint
+      run: |
+        pip install black hacking
+        black --check .
+        flake8 .
+    - name: Test
+      run: |
+        pip install pytest
+        ./run_tests.py
+    - name: Update README.md
+      run: |
+        if [ "$GITHUB_EVENT_NAME" = "push" -a "${GITHUB_REF:11}" = "master" ]; then
+          ./generate_readme.py > README.md
+
+          git config --global user.email "www.kentaro.wada@gmail.com"
+          git config --global user.name "Kentaro Wada"
+          git add README.md
+          git diff-index --cached --quiet HEAD || git commit -m "Update README.md"
+          git push origin master
+        fi

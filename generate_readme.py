@@ -55,7 +55,7 @@ def get_contents():
 
     yaml_file = osp.join(here, "conversions.yaml")
     with open(yaml_file) as f:
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
     contents = []
     for title, data in data.items():
         section = get_section(title, data)
