@@ -31,9 +31,7 @@ def get_section(title, data, h=2):
                 content = d[key]
                 is_code = True
             if is_code and content:
-                content = "<pre>\n{:s}</pre>".format(
-                    content
-                )
+                content = "<pre>\n{:s}</pre>".format(content)
             row.append(content)
         rows.append(row)
 
