@@ -104,6 +104,9 @@ torch.tensor([3.2, 4.3], dtype=torch.float16)</pre>          </td></tr>
 x.copy()</pre>        </td><td><pre>
 x.clone()</pre>          </td></tr>
 <tr><td><pre>
+x.astype(np.float32)</pre>        </td><td><pre>
+x.type(torch.float32); x.float()</pre>          </td></tr>
+<tr><td><pre>
 np.fromfile(file)</pre>        </td><td><pre>
 torch.tensor(torch.Storage(file))</pre>          </td></tr>
 <tr><td><pre>
@@ -236,8 +239,9 @@ x.resize_</pre>          </td></tr>
 <tr><td>       </td><td><pre>
 x.resize_as_</pre>          </td></tr>
 <tr><td><pre>
-x.transpose</pre>        </td><td><pre>
-x.transpose or x.permute</pre>          </td></tr>
+x.transpose(2, 0, 1)</pre>        </td><td><pre>
+x.permute(2, 0, 1); x.transpose(1, 2).tranpose(0, 1)  # 012 -> 021 -> 201
+</pre>          </td></tr>
 <tr><td><pre>
 x.flatten</pre>        </td><td><pre>
 x.view(-1)</pre>          </td></tr>
@@ -245,8 +249,8 @@ x.view(-1)</pre>          </td></tr>
 x.squeeze()</pre>        </td><td><pre>
 x.squeeze()</pre>          </td></tr>
 <tr><td><pre>
-x[:, np.newaxis]; np.expand_dims(x, 1)</pre>        </td><td><pre>
-x.unsqueeze(1)</pre>          </td></tr>
+x[:, None]; np.expand_dims(x, 1)</pre>        </td><td><pre>
+x[:, None]; x.unsqueeze(1)</pre>          </td></tr>
 </tbody>
 </table>
 <h2>Item selection and manipulation</h2>
@@ -265,6 +269,7 @@ x = np.array([1, 2, 3])
 x.repeat(2)  # [1, 1, 2, 2, 3, 3]
 </pre>        </td><td><pre>
 x = torch.tensor([1, 2, 3])
+x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
 x.repeat(2)  # [1, 2, 3, 1, 2, 3]
 x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 # [1, 1, 2, 2, 3, 3]
@@ -350,10 +355,10 @@ x.cumprod</pre>        </td><td><pre>
 x.cumprod</pre>          </td></tr>
 <tr><td><pre>
 x.all</pre>        </td><td><pre>
-(x == 1).sum() == x.nelement()</pre>          </td></tr>
+x.all</pre>          </td></tr>
 <tr><td><pre>
 x.any</pre>        </td><td><pre>
-(x == 1).sum() > 0</pre>          </td></tr>
+x.any</pre>          </td></tr>
 </tbody>
 </table>
 <h2>Arithmetic and comparison operations</h2>

@@ -147,6 +147,9 @@ torch.tensor([3.2, 4.3], dtype=torch.float16)</pre>          </td></tr>
 x.copy()</pre>        </td><td style='width: 50%'><pre>
 x.clone()</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
+x.astype(np.float32)</pre>        </td><td style='width: 50%'><pre>
+x.type(torch.float32); x.float()</pre>          </td></tr>
+<tr><td style='width: 50%'><pre>
 np.fromfile(file)</pre>        </td><td style='width: 50%'><pre>
 torch.tensor(torch.Storage(file))</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
@@ -291,8 +294,9 @@ x.resize_</pre>          </td></tr>
 <tr><td style='width: 50%'>       </td><td style='width: 50%'><pre>
 x.resize_as_</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
-x.transpose</pre>        </td><td style='width: 50%'><pre>
-x.transpose or x.permute</pre>          </td></tr>
+x.transpose(2, 0, 1)</pre>        </td><td style='width: 50%'><pre>
+x.permute(2, 0, 1); x.transpose(1, 2).tranpose(0, 1)  # 012 -> 021 -> 201
+</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
 x.flatten</pre>        </td><td style='width: 50%'><pre>
 x.view(-1)</pre>          </td></tr>
@@ -300,8 +304,8 @@ x.view(-1)</pre>          </td></tr>
 x.squeeze()</pre>        </td><td style='width: 50%'><pre>
 x.squeeze()</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
-x[:, np.newaxis]; np.expand_dims(x, 1)</pre>        </td><td style='width: 50%'><pre>
-x.unsqueeze(1)</pre>          </td></tr>
+x[:, None]; np.expand_dims(x, 1)</pre>        </td><td style='width: 50%'><pre>
+x[:, None]; x.unsqueeze(1)</pre>          </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -322,6 +326,7 @@ x = np.array([1, 2, 3])
 x.repeat(2)  # [1, 1, 2, 2, 3, 3]
 </pre>        </td><td style='width: 50%'><pre>
 x = torch.tensor([1, 2, 3])
+x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
 x.repeat(2)  # [1, 2, 3, 1, 2, 3]
 x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 # [1, 1, 2, 2, 3, 3]
@@ -409,10 +414,10 @@ x.cumprod</pre>        </td><td style='width: 50%'><pre>
 x.cumprod</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
 x.all</pre>        </td><td style='width: 50%'><pre>
-(x == 1).sum() == x.nelement()</pre>          </td></tr>
+x.all</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
 x.any</pre>        </td><td style='width: 50%'><pre>
-(x == 1).sum() > 0</pre>          </td></tr>
+x.any</pre>          </td></tr>
 </tbody>
 </table></div>
 </div>
