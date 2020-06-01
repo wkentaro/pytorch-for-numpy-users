@@ -62,7 +62,7 @@ def test_{key}_{id:04d}():
         else:
             raise ValueError
 
-        content = "\n".join(" " * 4 + l for l in content.splitlines())
+        content = "\n".join(" " * 4 + line for line in content.splitlines())
         code = code.format(key=key, id=i, content=content)
 
         test_file = osp.join(
