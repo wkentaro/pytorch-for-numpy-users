@@ -2,6 +2,7 @@
 # PyTorch for Numpy users.
 
 ![ci](https://github.com/wkentaro/pytorch-for-numpy-users/workflows/ci/badge.svg)
+![gh-pages](https://img.shields.io/github/deployments/wkentaro/pytorch-for-numpy-users/github-pages?label=gh-pages)
 
 
 [PyTorch](https://github.com/pytorch/pytorch.git) version of [_Torch for Numpy users_](https://github.com/torch/torch7/wiki/Torch-for-Numpy-users).  
