@@ -17,7 +17,6 @@ types:
     pytorch: torch.int32; torch.int
   - numpy: np.int64
     pytorch: torch.int64; torch.long
-
 ones and zeros:
   - numpy: np.empty((2, 3))
     pytorch: torch.empty(2, 3)
@@ -44,6 +43,8 @@ from existing data:
     pytorch: torch.tensor([3.2, 4.3], dtype=torch.float16)
   - numpy: x.copy()
     pytorch: x.clone()
+  - numpy: x.astype(np.float32)
+    pytorch: x.type(torch.float32); x.float()
   - numpy:
       content: np.fromfile(file)
       skip_test: true
@@ -122,14 +123,15 @@ shape manipulation:
     pytorch: x.resize_
   - numpy:
     pytorch: x.resize_as_
-  - numpy: x.transpose
-    pytorch: x.transpose or x.permute
+  - numpy: x.transpose(2, 0, 1)  # 012 -> 201
+    pytorch: |
+      x.permute(2, 0, 1); x.transpose(1, 2).tranpose(0, 1)  # 012 -> 021 -> 201
   - numpy: x.flatten
     pytorch: x.view(-1)
   - numpy: x.squeeze()
     pytorch: x.squeeze()
-  - numpy: x[:, np.newaxis]; np.expand_dims(x, 1)
-    pytorch: x.unsqueeze(1)
+  - numpy: x[:, None]; np.expand_dims(x, 1)
+    pytorch: x[:, None]; x.unsqueeze(1)
 item selection and manipulation:
   - numpy: np.put
     pytorch:
@@ -140,6 +142,7 @@ item selection and manipulation:
       x.repeat(2)  # [1, 1, 2, 2, 3, 3]
     pytorch: |
       x = torch.tensor([1, 2, 3])
+      x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
       x.repeat(2)  # [1, 2, 3, 1, 2, 3]
       x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
       # [1, 1, 2, 2, 3, 3]
