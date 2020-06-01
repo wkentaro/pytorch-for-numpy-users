@@ -204,9 +204,9 @@ calculation:
   - numpy: x.cumprod
     pytorch: x.cumprod
   - numpy: x.all
-    pytorch: (x == 1).sum() == x.nelement()
+    pytorch: x.all
   - numpy: x.any
-    pytorch: (x == 1).sum() > 0
+    pytorch: x.any
 arithmetic and comparison operations:
   - numpy: np.less
     pytorch: x.lt
