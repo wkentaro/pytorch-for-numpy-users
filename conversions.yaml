@@ -76,7 +76,17 @@ numerical ranges:
     pytorch: torch.logspace
 linear algebra:
   - numpy: np.dot
-    pytorch: torch.mm
+    pytorch: |
+      torch.dot   # 1D arrays only
+      torch.mm    # 2D arrays only
+      torch.mv    # matrix-vector (2D x 1D)
+  - numpy: np.matmul
+    pytorch: torch.matmul
+  - numpy: np.tensordot
+    pytorch: torch.tensordot
+  - numpy: np.einsum
+    pytorch: torch.einsum
+
 building matrices:
   - numpy: np.diag
     pytorch: torch.diag
@@ -86,7 +96,7 @@ building matrices:
     pytorch: torch.triu
 attributes:
   - numpy: x.shape
-    pytorch: x.shape
+    pytorch: x.shape; x.size()
   - numpy: x.strides
     pytorch: x.stride()
   - numpy: x.ndim
