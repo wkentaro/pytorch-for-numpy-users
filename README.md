@@ -241,8 +241,11 @@ x.resize_</pre>          </td></tr>
 <tr><td>       </td><td><pre>
 x.resize_as_</pre>          </td></tr>
 <tr><td><pre>
-x.transpose(2, 0, 1)</pre>        </td><td><pre>
-x.permute(2, 0, 1); x.transpose(1, 2).tranpose(0, 1)  # 012 -> 021 -> 201
+x = np.arange(6).reshape(3, 2, 1)
+x.transpose(2, 0, 1)  # 012 -> 201
+</pre>        </td><td><pre>
+x = torch.arange(6).reshape(3, 2, 1)
+x.permute(2, 0, 1); x.transpose(1, 2).transpose(0, 1)  # 012 -> 021 -> 201
 </pre>          </td></tr>
 <tr><td><pre>
 x.flatten</pre>        </td><td><pre>
