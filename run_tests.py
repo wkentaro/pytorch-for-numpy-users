@@ -73,7 +73,7 @@ def test_{key}_{id:04d}():
 
     cmd = "pytest -vs tests"
     print("+ %s" % cmd)
-    subprocess.call(cmd, shell=True)
+    subprocess.check_call(cmd, shell=True)
 
 
 if __name__ == "__main__":
