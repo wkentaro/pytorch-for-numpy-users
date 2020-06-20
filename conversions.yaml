@@ -123,9 +123,12 @@ shape manipulation:
     pytorch: x.resize_
   - numpy:
     pytorch: x.resize_as_
-  - numpy: x.transpose(2, 0, 1)  # 012 -> 201
+  - numpy: |
+      x = np.arange(6).reshape(3, 2, 1)
+      x.transpose(2, 0, 1)  # 012 -> 201
     pytorch: |
-      x.permute(2, 0, 1); x.transpose(1, 2).tranpose(0, 1)  # 012 -> 021 -> 201
+      x = torch.arange(6).reshape(3, 2, 1)
+      x.permute(2, 0, 1); x.transpose(1, 2).transpose(0, 1)  # 012 -> 021 -> 201
   - numpy: x.flatten
     pytorch: x.view(-1)
   - numpy: x.squeeze()
