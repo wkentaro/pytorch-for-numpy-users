@@ -35,7 +35,7 @@ def main():
     here = osp.dirname(osp.abspath(__file__))
 
     with open(osp.join(here, "conversions.yaml")) as f:
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
 
     for fname in glob.glob(osp.join(here, "tests/*.py")):
         os.remove(fname)
