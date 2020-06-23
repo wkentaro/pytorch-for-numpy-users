@@ -157,7 +157,19 @@ torch.logspace</pre>          </td></tr>
 <tbody>
 <tr><td><pre>
 np.dot</pre>        </td><td><pre>
-torch.mm</pre>          </td></tr>
+torch.dot   # 1D arrays only
+torch.mm    # 2D arrays only
+torch.mv    # matrix-vector (2D x 1D)
+</pre>          </td></tr>
+<tr><td><pre>
+np.matmul</pre>        </td><td><pre>
+torch.matmul</pre>          </td></tr>
+<tr><td><pre>
+np.tensordot</pre>        </td><td><pre>
+torch.tensordot</pre>          </td></tr>
+<tr><td><pre>
+np.einsum</pre>        </td><td><pre>
+torch.einsum</pre>          </td></tr>
 </tbody>
 </table>
 <h2>Building matrices</h2>
@@ -185,7 +197,7 @@ torch.triu</pre>          </td></tr>
 <tbody>
 <tr><td><pre>
 x.shape</pre>        </td><td><pre>
-x.shape</pre>          </td></tr>
+x.shape; x.size()</pre>          </td></tr>
 <tr><td><pre>
 x.strides</pre>        </td><td><pre>
 x.stride()</pre>          </td></tr>

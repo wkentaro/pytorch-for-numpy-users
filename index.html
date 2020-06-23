@@ -202,7 +202,19 @@ torch.logspace</pre>          </td></tr>
 <tbody>
 <tr><td style='width: 50%'><pre>
 np.dot</pre>        </td><td style='width: 50%'><pre>
-torch.mm</pre>          </td></tr>
+torch.dot   # 1D arrays only
+torch.mm    # 2D arrays only
+torch.mv    # matrix-vector (2D x 1D)
+</pre>          </td></tr>
+<tr><td style='width: 50%'><pre>
+np.matmul</pre>        </td><td style='width: 50%'><pre>
+torch.matmul</pre>          </td></tr>
+<tr><td style='width: 50%'><pre>
+np.tensordot</pre>        </td><td style='width: 50%'><pre>
+torch.tensordot</pre>          </td></tr>
+<tr><td style='width: 50%'><pre>
+np.einsum</pre>        </td><td style='width: 50%'><pre>
+torch.einsum</pre>          </td></tr>
 </tbody>
 </table></div>
 </div>
@@ -234,7 +246,7 @@ torch.triu</pre>          </td></tr>
 <tbody>
 <tr><td style='width: 50%'><pre>
 x.shape</pre>        </td><td style='width: 50%'><pre>
-x.shape</pre>          </td></tr>
+x.shape; x.size()</pre>          </td></tr>
 <tr><td style='width: 50%'><pre>
 x.strides</pre>        </td><td style='width: 50%'><pre>
 x.stride()</pre>          </td></tr>
