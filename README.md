@@ -24,412 +24,412 @@ git commit -m "Update conversions.yaml"
 <h2>Types</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                 </th><th>PyTorch                                </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.ndarray</pre>        </td><td><pre>
-torch.Tensor</pre>          </td></tr>
+np.ndarray</pre></td><td><pre>
+torch.Tensor</pre>               </td></tr>
 <tr><td><pre>
-np.float32</pre>        </td><td><pre>
-torch.float32; torch.float</pre>          </td></tr>
+np.float32</pre></td><td><pre>
+torch.float32; torch.float</pre> </td></tr>
 <tr><td><pre>
-np.float64</pre>        </td><td><pre>
-torch.float64; torch.double</pre>          </td></tr>
+np.float64</pre></td><td><pre>
+torch.float64; torch.double</pre></td></tr>
 <tr><td><pre>
-np.float16</pre>        </td><td><pre>
-torch.float16; torch.half</pre>          </td></tr>
+np.float16</pre></td><td><pre>
+torch.float16; torch.half</pre>  </td></tr>
 <tr><td><pre>
-np.int8</pre>        </td><td><pre>
-torch.int8</pre>          </td></tr>
+np.int8</pre>   </td><td><pre>
+torch.int8</pre>                 </td></tr>
 <tr><td><pre>
-np.uint8</pre>        </td><td><pre>
-torch.uint8</pre>          </td></tr>
+np.uint8</pre>  </td><td><pre>
+torch.uint8</pre>                </td></tr>
 <tr><td><pre>
-np.int16</pre>        </td><td><pre>
-torch.int16; torch.short</pre>          </td></tr>
+np.int16</pre>  </td><td><pre>
+torch.int16; torch.short</pre>   </td></tr>
 <tr><td><pre>
-np.int32</pre>        </td><td><pre>
-torch.int32; torch.int</pre>          </td></tr>
+np.int32</pre>  </td><td><pre>
+torch.int32; torch.int</pre>     </td></tr>
 <tr><td><pre>
-np.int64</pre>        </td><td><pre>
-torch.int64; torch.long</pre>          </td></tr>
+np.int64</pre>  </td><td><pre>
+torch.int64; torch.long</pre>    </td></tr>
 </tbody>
 </table>
 <h2>Ones and zeros</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                       </th><th>PyTorch                        </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.empty((2, 3))</pre>        </td><td><pre>
-torch.empty(2, 3)</pre>          </td></tr>
+np.empty((2, 3))</pre></td><td><pre>
+torch.empty(2, 3)</pre>  </td></tr>
 <tr><td><pre>
-np.empty_like(x)</pre>        </td><td><pre>
-torch.empty_like(x)</pre>          </td></tr>
+np.empty_like(x)</pre></td><td><pre>
+torch.empty_like(x)</pre></td></tr>
 <tr><td><pre>
-np.eye</pre>        </td><td><pre>
+np.eye</pre>          </td><td><pre>
 torch.eye</pre>          </td></tr>
 <tr><td><pre>
-np.identity</pre>        </td><td><pre>
+np.identity</pre>     </td><td><pre>
 torch.eye</pre>          </td></tr>
 <tr><td><pre>
-np.ones</pre>        </td><td><pre>
-torch.ones</pre>          </td></tr>
+np.ones</pre>         </td><td><pre>
+torch.ones</pre>         </td></tr>
 <tr><td><pre>
-np.ones_like</pre>        </td><td><pre>
-torch.ones_like</pre>          </td></tr>
+np.ones_like</pre>    </td><td><pre>
+torch.ones_like</pre>    </td></tr>
 <tr><td><pre>
 np.zeros</pre>        </td><td><pre>
-torch.zeros</pre>          </td></tr>
+torch.zeros</pre>        </td></tr>
 <tr><td><pre>
-np.zeros_like</pre>        </td><td><pre>
-torch.zeros_like</pre>          </td></tr>
+np.zeros_like</pre>   </td><td><pre>
+torch.zeros_like</pre>   </td></tr>
 </tbody>
 </table>
 <h2>From existing data</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                                                                     </th><th>PyTorch                                                  </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.array([[1, 2], [3, 4]])</pre>        </td><td><pre>
-torch.tensor([[1, 2], [3, 4]])</pre>          </td></tr>
+np.array([[1, 2], [3, 4]])</pre>                                    </td><td><pre>
+torch.tensor([[1, 2], [3, 4]])</pre>               </td></tr>
 <tr><td><pre>
 np.array([3.2, 4.3], dtype=np.float16)
 np.float16([3.2, 4.3])
-</pre>        </td><td><pre>
-torch.tensor([3.2, 4.3], dtype=torch.float16)</pre>          </td></tr>
+</pre></td><td><pre>
+torch.tensor([3.2, 4.3], dtype=torch.float16)</pre></td></tr>
 <tr><td><pre>
-x.copy()</pre>        </td><td><pre>
-x.clone()</pre>          </td></tr>
+x.copy()</pre>                                                      </td><td><pre>
+x.clone()</pre>                                    </td></tr>
 <tr><td><pre>
-x.astype(np.float32)</pre>        </td><td><pre>
-x.type(torch.float32); x.float()</pre>          </td></tr>
+x.astype(np.float32)</pre>                                          </td><td><pre>
+x.type(torch.float32); x.float()</pre>             </td></tr>
 <tr><td><pre>
-np.fromfile(file)</pre>        </td><td><pre>
-torch.tensor(torch.Storage(file))</pre>          </td></tr>
+np.fromfile(file)</pre>                                             </td><td><pre>
+torch.tensor(torch.Storage(file))</pre>            </td></tr>
 <tr><td><pre>
-np.frombuffer</pre>        </td><td>         </td></tr>
+np.frombuffer</pre>                                                 </td><td>                                                         </td></tr>
 <tr><td><pre>
-np.fromfunction</pre>        </td><td>         </td></tr>
+np.fromfunction</pre>                                               </td><td>                                                         </td></tr>
 <tr><td><pre>
-np.fromiter</pre>        </td><td>         </td></tr>
+np.fromiter</pre>                                                   </td><td>                                                         </td></tr>
 <tr><td><pre>
-np.fromstring</pre>        </td><td>         </td></tr>
+np.fromstring</pre>                                                 </td><td>                                                         </td></tr>
 <tr><td><pre>
-np.load</pre>        </td><td><pre>
-torch.load</pre>          </td></tr>
+np.load</pre>                                                       </td><td><pre>
+torch.load</pre>                                   </td></tr>
 <tr><td><pre>
-np.loadtxt</pre>        </td><td>         </td></tr>
+np.loadtxt</pre>                                                    </td><td>                                                         </td></tr>
 <tr><td><pre>
-np.concatenate</pre>        </td><td><pre>
-torch.cat</pre>          </td></tr>
+np.concatenate</pre>                                                </td><td><pre>
+torch.cat</pre>                                    </td></tr>
 </tbody>
 </table>
 <h2>Numerical ranges</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                           </th><th>PyTorch                            </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.arange(10)</pre>        </td><td><pre>
-torch.arange(10)</pre>          </td></tr>
+np.arange(10)</pre>       </td><td><pre>
+torch.arange(10)</pre>       </td></tr>
 <tr><td><pre>
-np.arange(2, 3, 0.1)</pre>        </td><td><pre>
-torch.arange(2, 3, 0.1)</pre>          </td></tr>
+np.arange(2, 3, 0.1)</pre></td><td><pre>
+torch.arange(2, 3, 0.1)</pre></td></tr>
 <tr><td><pre>
-np.linspace</pre>        </td><td><pre>
-torch.linspace</pre>          </td></tr>
+np.linspace</pre>         </td><td><pre>
+torch.linspace</pre>         </td></tr>
 <tr><td><pre>
-np.logspace</pre>        </td><td><pre>
-torch.logspace</pre>          </td></tr>
+np.logspace</pre>         </td><td><pre>
+torch.logspace</pre>         </td></tr>
 </tbody>
 </table>
 <h2>Linear algebra</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                   </th><th>PyTorch                                                                                                     </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.dot</pre>        </td><td><pre>
+np.dot</pre>      </td><td><pre>
 torch.dot   # 1D arrays only
 torch.mm    # 2D arrays only
 torch.mv    # matrix-vector (2D x 1D)
-</pre>          </td></tr>
+</pre></td></tr>
 <tr><td><pre>
-np.matmul</pre>        </td><td><pre>
-torch.matmul</pre>          </td></tr>
+np.matmul</pre>   </td><td><pre>
+torch.matmul</pre>                                                                                    </td></tr>
 <tr><td><pre>
-np.tensordot</pre>        </td><td><pre>
-torch.tensordot</pre>          </td></tr>
+np.tensordot</pre></td><td><pre>
+torch.tensordot</pre>                                                                                 </td></tr>
 <tr><td><pre>
-np.einsum</pre>        </td><td><pre>
-torch.einsum</pre>          </td></tr>
+np.einsum</pre>   </td><td><pre>
+torch.einsum</pre>                                                                                    </td></tr>
 </tbody>
 </table>
 <h2>Building matrices</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy              </th><th>PyTorch               </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.diag</pre>        </td><td><pre>
-torch.diag</pre>          </td></tr>
+np.diag</pre></td><td><pre>
+torch.diag</pre></td></tr>
 <tr><td><pre>
-np.tril</pre>        </td><td><pre>
-torch.tril</pre>          </td></tr>
+np.tril</pre></td><td><pre>
+torch.tril</pre></td></tr>
 <tr><td><pre>
-np.triu</pre>        </td><td><pre>
-torch.triu</pre>          </td></tr>
+np.triu</pre></td><td><pre>
+torch.triu</pre></td></tr>
 </tbody>
 </table>
 <h2>Attributes</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                </th><th>PyTorch                      </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-x.shape</pre>        </td><td><pre>
-x.shape; x.size()</pre>          </td></tr>
+x.shape</pre>  </td><td><pre>
+x.shape; x.size()</pre></td></tr>
 <tr><td><pre>
-x.strides</pre>        </td><td><pre>
-x.stride()</pre>          </td></tr>
+x.strides</pre></td><td><pre>
+x.stride()</pre>       </td></tr>
 <tr><td><pre>
-x.ndim</pre>        </td><td><pre>
+x.ndim</pre>   </td><td><pre>
 x.dim()</pre>          </td></tr>
 <tr><td><pre>
-x.data</pre>        </td><td><pre>
-x.data</pre>          </td></tr>
+x.data</pre>   </td><td><pre>
+x.data</pre>           </td></tr>
 <tr><td><pre>
-x.size</pre>        </td><td><pre>
-x.nelement()</pre>          </td></tr>
+x.size</pre>   </td><td><pre>
+x.nelement()</pre>     </td></tr>
 <tr><td><pre>
-x.dtype</pre>        </td><td><pre>
+x.dtype</pre>  </td><td><pre>
 x.dtype</pre>          </td></tr>
 </tbody>
 </table>
 <h2>Indexing</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                          </th><th>PyTorch                                             </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-x[0]</pre>        </td><td><pre>
-x[0]</pre>          </td></tr>
+x[0]</pre>               </td><td><pre>
+x[0]</pre>                                    </td></tr>
 <tr><td><pre>
-x[:, 0]</pre>        </td><td><pre>
-x[:, 0]</pre>          </td></tr>
+x[:, 0]</pre>            </td><td><pre>
+x[:, 0]</pre>                                 </td></tr>
 <tr><td><pre>
-x[indices]</pre>        </td><td><pre>
-x[indices]</pre>          </td></tr>
+x[indices]</pre>         </td><td><pre>
+x[indices]</pre>                              </td></tr>
 <tr><td><pre>
-np.take(x, indices)</pre>        </td><td><pre>
-torch.take(x, torch.LongTensor(indices))</pre>          </td></tr>
+np.take(x, indices)</pre></td><td><pre>
+torch.take(x, torch.LongTensor(indices))</pre></td></tr>
 <tr><td><pre>
-x[x != 0]</pre>        </td><td><pre>
-x[x != 0]</pre>          </td></tr>
+x[x != 0]</pre>          </td><td><pre>
+x[x != 0]</pre>                               </td></tr>
 </tbody>
 </table>
 <h2>Shape manipulation</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                                                                            </th><th>PyTorch                                                                                                                     </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-x.reshape</pre>        </td><td><pre>
-x.reshape; x.view</pre>          </td></tr>
+x.reshape</pre>                                                            </td><td><pre>
+x.reshape; x.view</pre>                                                                                               </td></tr>
 <tr><td><pre>
-x.resize()</pre>        </td><td><pre>
-x.resize_</pre>          </td></tr>
-<tr><td>       </td><td><pre>
-x.resize_as_</pre>          </td></tr>
+x.resize()</pre>                                                           </td><td><pre>
+x.resize_</pre>                                                                                                       </td></tr>
+<tr><td>                                                                                 </td><td><pre>
+x.resize_as_</pre>                                                                                                    </td></tr>
 <tr><td><pre>
 x = np.arange(6).reshape(3, 2, 1)
 x.transpose(2, 0, 1)  # 012 -> 201
-</pre>        </td><td><pre>
+</pre></td><td><pre>
 x = torch.arange(6).reshape(3, 2, 1)
 x.permute(2, 0, 1); x.transpose(1, 2).transpose(0, 1)  # 012 -> 021 -> 201
-</pre>          </td></tr>
+</pre></td></tr>
 <tr><td><pre>
-x.flatten</pre>        </td><td><pre>
-x.view(-1)</pre>          </td></tr>
+x.flatten</pre>                                                            </td><td><pre>
+x.view(-1)</pre>                                                                                                      </td></tr>
 <tr><td><pre>
-x.squeeze()</pre>        </td><td><pre>
-x.squeeze()</pre>          </td></tr>
+x.squeeze()</pre>                                                          </td><td><pre>
+x.squeeze()</pre>                                                                                                     </td></tr>
 <tr><td><pre>
-x[:, None]; np.expand_dims(x, 1)</pre>        </td><td><pre>
-x[:, None]; x.unsqueeze(1)</pre>          </td></tr>
+x[:, None]; np.expand_dims(x, 1)</pre>                                     </td><td><pre>
+x[:, None]; x.unsqueeze(1)</pre>                                                                                      </td></tr>
 </tbody>
 </table>
 <h2>Item selection and manipulation</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                                                                 </th><th>PyTorch                                                                                                                                                                                            </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.put</pre>        </td><td>         </td></tr>
+np.put</pre>                                                    </td><td>                                                                                                                                                                                                   </td></tr>
 <tr><td><pre>
-x.put</pre>        </td><td><pre>
-x.put_</pre>          </td></tr>
+x.put</pre>                                                     </td><td><pre>
+x.put_</pre>                                                                                                                                                                                 </td></tr>
 <tr><td><pre>
 x = np.array([1, 2, 3])
 x.repeat(2)  # [1, 1, 2, 2, 3, 3]
-</pre>        </td><td><pre>
+</pre></td><td><pre>
 x = torch.tensor([1, 2, 3])
 x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
 x.repeat(2)  # [1, 2, 3, 1, 2, 3]
 x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 # [1, 1, 2, 2, 3, 3]
-</pre>          </td></tr>
+</pre></td></tr>
 <tr><td><pre>
-np.tile(x, (3, 2))</pre>        </td><td><pre>
-x.repeat(3, 2)</pre>          </td></tr>
+np.tile(x, (3, 2))</pre>                                        </td><td><pre>
+x.repeat(3, 2)</pre>                                                                                                                                                                         </td></tr>
 <tr><td><pre>
-np.choose</pre>        </td><td>         </td></tr>
+np.choose</pre>                                                 </td><td>                                                                                                                                                                                                   </td></tr>
 <tr><td><pre>
-np.sort</pre>        </td><td><pre>
-sorted, indices = torch.sort(x, [dim])</pre>          </td></tr>
+np.sort</pre>                                                   </td><td><pre>
+sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td><pre>
-np.argsort</pre>        </td><td><pre>
-sorted, indices = torch.sort(x, [dim])</pre>          </td></tr>
+np.argsort</pre>                                                </td><td><pre>
+sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td><pre>
-np.nonzero</pre>        </td><td><pre>
-torch.nonzero</pre>          </td></tr>
+np.nonzero</pre>                                                </td><td><pre>
+torch.nonzero</pre>                                                                                                                                                                          </td></tr>
 <tr><td><pre>
-np.where</pre>        </td><td><pre>
-torch.where</pre>          </td></tr>
+np.where</pre>                                                  </td><td><pre>
+torch.where</pre>                                                                                                                                                                            </td></tr>
 <tr><td><pre>
-x[::-1]</pre>        </td><td><pre>
-torch.flip(x, [0])</pre>          </td></tr>
+x[::-1]</pre>                                                   </td><td><pre>
+torch.flip(x, [0])</pre>                                                                                                                                                                     </td></tr>
 <tr><td><pre>
-np.unique(x)</pre>        </td><td><pre>
-torch.unique(x)</pre>          </td></tr>
+np.unique(x)</pre>                                              </td><td><pre>
+torch.unique(x)</pre>                                                                                                                                                                        </td></tr>
 </tbody>
 </table>
 <h2>Calculation</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                    </th><th>PyTorch                              </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
 x.min</pre>        </td><td><pre>
-x.min</pre>          </td></tr>
+x.min</pre>                    </td></tr>
 <tr><td><pre>
-x.argmin</pre>        </td><td><pre>
-x.argmin</pre>          </td></tr>
+x.argmin</pre>     </td><td><pre>
+x.argmin</pre>                 </td></tr>
 <tr><td><pre>
 x.max</pre>        </td><td><pre>
-x.max</pre>          </td></tr>
+x.max</pre>                    </td></tr>
 <tr><td><pre>
-x.argmax</pre>        </td><td><pre>
-x.argmax</pre>          </td></tr>
+x.argmax</pre>     </td><td><pre>
+x.argmax</pre>                 </td></tr>
 <tr><td><pre>
-x.clip</pre>        </td><td><pre>
-x.clamp</pre>          </td></tr>
+x.clip</pre>       </td><td><pre>
+x.clamp</pre>                  </td></tr>
 <tr><td><pre>
-x.round</pre>        </td><td><pre>
-x.round</pre>          </td></tr>
+x.round</pre>      </td><td><pre>
+x.round</pre>                  </td></tr>
 <tr><td><pre>
-np.floor(x)</pre>        </td><td><pre>
-torch.floor(x); x.floor()</pre>          </td></tr>
+np.floor(x)</pre>  </td><td><pre>
+torch.floor(x); x.floor()</pre></td></tr>
 <tr><td><pre>
-np.ceil(x)</pre>        </td><td><pre>
-torch.ceil(x); x.ceil()</pre>          </td></tr>
+np.ceil(x)</pre>   </td><td><pre>
+torch.ceil(x); x.ceil()</pre>  </td></tr>
 <tr><td><pre>
-x.trace</pre>        </td><td><pre>
-x.trace</pre>          </td></tr>
+x.trace</pre>      </td><td><pre>
+x.trace</pre>                  </td></tr>
 <tr><td><pre>
 x.sum</pre>        </td><td><pre>
-x.sum</pre>          </td></tr>
+x.sum</pre>                    </td></tr>
 <tr><td><pre>
-x.sum(axis=0)</pre>        </td><td><pre>
-x.sum(0)</pre>          </td></tr>
+x.sum(axis=0)</pre></td><td><pre>
+x.sum(0)</pre>                 </td></tr>
 <tr><td><pre>
-x.cumsum</pre>        </td><td><pre>
-x.cumsum</pre>          </td></tr>
+x.cumsum</pre>     </td><td><pre>
+x.cumsum</pre>                 </td></tr>
 <tr><td><pre>
-x.mean</pre>        </td><td><pre>
-x.mean</pre>          </td></tr>
+x.mean</pre>       </td><td><pre>
+x.mean</pre>                   </td></tr>
 <tr><td><pre>
 x.std</pre>        </td><td><pre>
-x.std</pre>          </td></tr>
+x.std</pre>                    </td></tr>
 <tr><td><pre>
-x.prod</pre>        </td><td><pre>
-x.prod</pre>          </td></tr>
+x.prod</pre>       </td><td><pre>
+x.prod</pre>                   </td></tr>
 <tr><td><pre>
-x.cumprod</pre>        </td><td><pre>
-x.cumprod</pre>          </td></tr>
+x.cumprod</pre>    </td><td><pre>
+x.cumprod</pre>                </td></tr>
 <tr><td><pre>
 x.all</pre>        </td><td><pre>
-x.all</pre>          </td></tr>
+x.all</pre>                    </td></tr>
 <tr><td><pre>
 x.any</pre>        </td><td><pre>
-x.any</pre>          </td></tr>
+x.any</pre>                    </td></tr>
 </tbody>
 </table>
 <h2>Arithmetic and comparison operations</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                       </th><th>PyTorch         </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.less</pre>        </td><td><pre>
-x.lt</pre>          </td></tr>
+np.less</pre>         </td><td><pre>
+x.lt</pre></td></tr>
 <tr><td><pre>
-np.less_equal</pre>        </td><td><pre>
-x.le</pre>          </td></tr>
+np.less_equal</pre>   </td><td><pre>
+x.le</pre></td></tr>
 <tr><td><pre>
-np.greater</pre>        </td><td><pre>
-x.gt</pre>          </td></tr>
+np.greater</pre>      </td><td><pre>
+x.gt</pre></td></tr>
 <tr><td><pre>
-np.greater_equal</pre>        </td><td><pre>
-x.ge</pre>          </td></tr>
+np.greater_equal</pre></td><td><pre>
+x.ge</pre></td></tr>
 <tr><td><pre>
 np.equal</pre>        </td><td><pre>
-x.eq</pre>          </td></tr>
+x.eq</pre></td></tr>
 <tr><td><pre>
-np.not_equal</pre>        </td><td><pre>
-x.ne</pre>          </td></tr>
+np.not_equal</pre>    </td><td><pre>
+x.ne</pre></td></tr>
 </tbody>
 </table>
 <h2>Random numbers</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy                               </th><th>PyTorch                      </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.random.seed</pre>        </td><td><pre>
-torch.manual_seed</pre>          </td></tr>
+np.random.seed</pre>          </td><td><pre>
+torch.manual_seed</pre></td></tr>
 <tr><td><pre>
-np.random.permutation(5)</pre>        </td><td><pre>
-torch.randperm(5)</pre>          </td></tr>
+np.random.permutation(5)</pre></td><td><pre>
+torch.randperm(5)</pre></td></tr>
 </tbody>
 </table>
 <h2>Numerical operations</h2>
 <table>
 <thead>
-<tr><th>Numpy  </th><th>PyTorch  </th></tr>
+<tr><th>Numpy              </th><th>PyTorch               </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.sign</pre>        </td><td><pre>
-torch.sign</pre>          </td></tr>
+np.sign</pre></td><td><pre>
+torch.sign</pre></td></tr>
 <tr><td><pre>
-np.sqrt</pre>        </td><td><pre>
-torch.sqrt</pre>          </td></tr>
+np.sqrt</pre></td><td><pre>
+torch.sqrt</pre></td></tr>
 </tbody>
 </table>
 
