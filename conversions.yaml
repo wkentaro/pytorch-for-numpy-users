@@ -65,6 +65,7 @@ from existing data:
     pytorch:
   - numpy: np.concatenate
     pytorch: torch.cat
+
 numerical ranges:
   - numpy: np.arange(10)
     pytorch: torch.arange(10)
@@ -126,35 +127,7 @@ indexing:
       skip_test: true
   - numpy: x[x != 0]
     pytorch: x[x != 0]
-  - numpy: |
-      a = np.arange(10).reshape(2, 5)
-      ixgrid = np.ix_([0, 1], [2, 4])
-      a[ixgrid]
-      # array([[2, 4],
-      #        [7, 9]])
-    pytorch: |
-      a = torch.arange(10).reshape(2, 5)
 
-      def torch_ix_(*args):
-       out = []
-       nd = len(args)
-       for k, new in enumerate(args):
-           if not isinstance(new, torch.Tensor):
-               new = torch.tensor(new)
-               if new.shape[0] == 0:
-                   new = new.type_as(torch.uint8)
-           if new.ndim != 1:
-               raise ValueError("Cross index must be 1 dimensional")
-           if new.dtype is torch.bool:
-               new, = new.nonzero().T
-           new = new.reshape((1,) * k + (tuple(new.shape,)) + (1,) * (nd - k - 1))
-           out.append(new)
-       return tuple(out)
-
-      ixgrid = torch_ix_(torch.tensor([0, 1]), torch.tensor([2, 4]))
-      a[ixgrid]
-      # tensor([[2, 4],
-      #         [7, 9]])
 
       
 shape manipulation:
@@ -210,6 +183,35 @@ item selection and manipulation:
     pytorch: torch.flip(x, [0])
   - numpy: np.unique(x)
     pytorch: torch.unique(x)
+  - numpy: |
+      a = np.arange(10).reshape(2, 5)
+      ixgrid = np.ix_([0, 1], [2, 4])
+      a[ixgrid]
+      # array([[2, 4],
+      #        [7, 9]])
+    pytorch: |
+      a = torch.arange(10).reshape(2, 5)
+
+      def torch_ix_(*args):
+       out = []
+       nd = len(args)
+       for k, new in enumerate(args):
+           if not isinstance(new, torch.Tensor):
+               new = torch.tensor(new)
+               if new.shape[0] == 0:
+                   new = new.type_as(torch.uint8)
+           if new.ndim != 1:
+               raise ValueError("Cross index must be 1 dimensional")
+           if new.dtype is torch.bool:
+               new, = new.nonzero().T
+           new = new.reshape((1,) * k + (tuple(new.shape,)) + (1,) * (nd - k - 1))
+           out.append(new)
+       return tuple(out)
+
+      ixgrid = torch_ix_(torch.tensor([0, 1]), torch.tensor([2, 4]))
+      a[ixgrid]
+      # tensor([[2, 4],
+      #         [7, 9]])
 calculation:
   - numpy: x.min
     pytorch: x.min
