@@ -199,7 +199,7 @@ item selection and manipulation:
            if not isinstance(new, torch.Tensor):
                new = torch.tensor(new)
                if new.shape[0] == 0:
-                   new = new.type_as(torch.uint8)
+                   new = new.type_as(torch.int64)
            if new.ndim != 1:
                raise ValueError("Cross index must be 1 dimensional")
            if new.dtype is torch.bool:
