@@ -161,8 +161,15 @@ item selection and manipulation:
       # [1, 1, 2, 2, 3, 3]
   - numpy: np.tile(x, (3, 2))
     pytorch: x.repeat(3, 2)
-  - numpy: np.choose
-    pytorch:
+  - numpy: |
+      x = np.array([[0, 1], [2, 3], [4, 5]])
+      idxs = np.array([0, 2])
+      np.choose(idxs, x) # [0, 5]
+    pytorch: |
+      x = torch.tensor([[0, 1], [2, 3], [4, 5]])
+      idxs = torch.tensor([0, 2])
+      x[idxs, torch.arange(x.shape[1])] # [0, 5]
+      torch.gather(x, 0, idxs[None, :])[0] # [0, 5]
   - numpy: np.sort
     pytorch:
       content: sorted, indices = torch.sort(x, [dim])
