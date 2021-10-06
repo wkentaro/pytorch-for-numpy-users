@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
         ./run_tests.py
     - name: Update README.md
       run: |
-        if [ "$GITHUB_EVENT_NAME" = "push" -a "${GITHUB_REF:11}" = "master" ]; then
+        if [ "$GITHUB_EVENT_NAME" = "push" -a "${GITHUB_REF:11}" = "main" ]; then
           ./generate_readme_md.py > README.md
           ./generate_index_html.py > index.html
 
@@ -42,5 +42,5 @@ jobs:
           git config --global user.name "Kentaro Wada"
           git add README.md index.html
           git diff-index --cached --quiet HEAD || git commit -m "Update README.md and index.html"
-          git push origin master
+          git push origin main
         fi
