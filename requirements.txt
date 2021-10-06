@@ -1,4 +1,4 @@
 numpy
 PyYAML
-tabulate<0.8
+tabulate
 torch

@@ -37,7 +37,9 @@ def get_section(title, data, h=2):
 
     contents = []
     contents.append("<h{0:d}>{1:s}</h{0:d}>".format(h, title.capitalize()))
-    contents.append(tabulate.tabulate(rows, headers=headers, tablefmt="html"))
+    contents.append(
+        tabulate.tabulate(rows, headers=headers, tablefmt="unsafehtml")
+    )
     return "\n".join(contents)
 
 
