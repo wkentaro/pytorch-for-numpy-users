@@ -273,18 +273,18 @@ x[:, None]; x.unsqueeze(1)</pre>                                                
 <h2>Item selection and manipulation</h2>
 <table>
 <thead>
-<tr><th>Numpy                                                                 </th><th>PyTorch                                                                                                                                                                                            </th></tr>
+<tr><th>Numpy                                                                                                  </th><th>PyTorch                                                                                                                                                                                            </th></tr>
 </thead>
 <tbody>
 <tr><td><pre>
-np.put</pre>                                                    </td><td>                                                                                                                                                                                                   </td></tr>
+np.put</pre>                                                                                     </td><td>                                                                                                                                                                                                   </td></tr>
 <tr><td><pre>
-x.put</pre>                                                     </td><td><pre>
+x.put</pre>                                                                                      </td><td><pre>
 x.put_</pre>                                                                                                                                                                                 </td></tr>
 <tr><td><pre>
 x = np.array([1, 2, 3])
 x.repeat(2)  # [1, 1, 2, 2, 3, 3]
-</pre></td><td><pre>
+</pre>                                 </td><td><pre>
 x = torch.tensor([1, 2, 3])
 x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
 x.repeat(2)  # [1, 2, 3, 1, 2, 3]
@@ -292,27 +292,35 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 # [1, 1, 2, 2, 3, 3]
 </pre></td></tr>
 <tr><td><pre>
-np.tile(x, (3, 2))</pre>                                        </td><td><pre>
+np.tile(x, (3, 2))</pre>                                                                         </td><td><pre>
 x.repeat(3, 2)</pre>                                                                                                                                                                         </td></tr>
 <tr><td><pre>
-np.choose</pre>                                                 </td><td>                                                                                                                                                                                                   </td></tr>
+x = np.array([[0, 1], [2, 3], [4, 5]])
+idxs = np.array([0, 2])
+np.choose(idxs, x) # [0, 5]
+</pre></td><td><pre>
+x = torch.tensor([[0, 1], [2, 3], [4, 5]])
+idxs = torch.tensor([0, 2])
+x[idxs, torch.arange(x.shape[1])] # [0, 5]
+torch.gather(x, 0, idxs[None, :])[0] # [0, 5]
+</pre>                       </td></tr>
 <tr><td><pre>
-np.sort</pre>                                                   </td><td><pre>
+np.sort</pre>                                                                                    </td><td><pre>
 sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td><pre>
-np.argsort</pre>                                                </td><td><pre>
+np.argsort</pre>                                                                                 </td><td><pre>
 sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td><pre>
-np.nonzero</pre>                                                </td><td><pre>
+np.nonzero</pre>                                                                                 </td><td><pre>
 torch.nonzero</pre>                                                                                                                                                                          </td></tr>
 <tr><td><pre>
-np.where</pre>                                                  </td><td><pre>
+np.where</pre>                                                                                   </td><td><pre>
 torch.where</pre>                                                                                                                                                                            </td></tr>
 <tr><td><pre>
-x[::-1]</pre>                                                   </td><td><pre>
+x[::-1]</pre>                                                                                    </td><td><pre>
 torch.flip(x, [0])</pre>                                                                                                                                                                     </td></tr>
 <tr><td><pre>
-np.unique(x)</pre>                                              </td><td><pre>
+np.unique(x)</pre>                                                                               </td><td><pre>
 torch.unique(x)</pre>                                                                                                                                                                        </td></tr>
 </tbody>
 </table>

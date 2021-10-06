@@ -328,18 +328,18 @@ x[:, None]; x.unsqueeze(1)</pre>                                                
 <h2>Item selection and manipulation</h2>
 <div class='table-responsive'><table class='table table-bordered table-hover'>
 <thead>
-<tr><th>Numpy                                                                 </th><th>PyTorch                                                                                                                                                                                            </th></tr>
+<tr><th>Numpy                                                                                                  </th><th>PyTorch                                                                                                                                                                                            </th></tr>
 </thead>
 <tbody>
 <tr><td style='width: 50%'><pre>
-np.put</pre>                                                    </td><td style='width: 50%'>                                                                                                                                                                                                   </td></tr>
+np.put</pre>                                                                                     </td><td style='width: 50%'>                                                                                                                                                                                                   </td></tr>
 <tr><td style='width: 50%'><pre>
-x.put</pre>                                                     </td><td style='width: 50%'><pre>
+x.put</pre>                                                                                      </td><td style='width: 50%'><pre>
 x.put_</pre>                                                                                                                                                                                 </td></tr>
 <tr><td style='width: 50%'><pre>
 x = np.array([1, 2, 3])
 x.repeat(2)  # [1, 1, 2, 2, 3, 3]
-</pre></td><td style='width: 50%'><pre>
+</pre>                                 </td><td style='width: 50%'><pre>
 x = torch.tensor([1, 2, 3])
 x.repeat_interleave(2)  # [1, 1, 2, 2, 3, 3]
 x.repeat(2)  # [1, 2, 3, 1, 2, 3]
@@ -347,27 +347,35 @@ x.repeat(2).reshape(2, -1).transpose(1, 0).reshape(-1)
 # [1, 1, 2, 2, 3, 3]
 </pre></td></tr>
 <tr><td style='width: 50%'><pre>
-np.tile(x, (3, 2))</pre>                                        </td><td style='width: 50%'><pre>
+np.tile(x, (3, 2))</pre>                                                                         </td><td style='width: 50%'><pre>
 x.repeat(3, 2)</pre>                                                                                                                                                                         </td></tr>
 <tr><td style='width: 50%'><pre>
-np.choose</pre>                                                 </td><td style='width: 50%'>                                                                                                                                                                                                   </td></tr>
+x = np.array([[0, 1], [2, 3], [4, 5]])
+idxs = np.array([0, 2])
+np.choose(idxs, x) # [0, 5]
+</pre></td><td style='width: 50%'><pre>
+x = torch.tensor([[0, 1], [2, 3], [4, 5]])
+idxs = torch.tensor([0, 2])
+x[idxs, torch.arange(x.shape[1])] # [0, 5]
+torch.gather(x, 0, idxs[None, :])[0] # [0, 5]
+</pre>                       </td></tr>
 <tr><td style='width: 50%'><pre>
-np.sort</pre>                                                   </td><td style='width: 50%'><pre>
+np.sort</pre>                                                                                    </td><td style='width: 50%'><pre>
 sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td style='width: 50%'><pre>
-np.argsort</pre>                                                </td><td style='width: 50%'><pre>
+np.argsort</pre>                                                                                 </td><td style='width: 50%'><pre>
 sorted, indices = torch.sort(x, [dim])</pre>                                                                                                                                                 </td></tr>
 <tr><td style='width: 50%'><pre>
-np.nonzero</pre>                                                </td><td style='width: 50%'><pre>
+np.nonzero</pre>                                                                                 </td><td style='width: 50%'><pre>
 torch.nonzero</pre>                                                                                                                                                                          </td></tr>
 <tr><td style='width: 50%'><pre>
-np.where</pre>                                                  </td><td style='width: 50%'><pre>
+np.where</pre>                                                                                   </td><td style='width: 50%'><pre>
 torch.where</pre>                                                                                                                                                                            </td></tr>
 <tr><td style='width: 50%'><pre>
-x[::-1]</pre>                                                   </td><td style='width: 50%'><pre>
+x[::-1]</pre>                                                                                    </td><td style='width: 50%'><pre>
 torch.flip(x, [0])</pre>                                                                                                                                                                     </td></tr>
 <tr><td style='width: 50%'><pre>
-np.unique(x)</pre>                                              </td><td style='width: 50%'><pre>
+np.unique(x)</pre>                                                                               </td><td style='width: 50%'><pre>
 torch.unique(x)</pre>                                                                                                                                                                        </td></tr>
 </tbody>
 </table></div>
